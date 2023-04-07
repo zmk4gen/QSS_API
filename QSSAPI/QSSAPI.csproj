@@ -155,8 +155,25 @@
     <Compile Include="Areas\HelpPage\SampleGeneration\SampleDirection.cs" />
     <Compile Include="Areas\HelpPage\SampleGeneration\TextSample.cs" />
     <Compile Include="Areas\HelpPage\XmlDocumentationProvider.cs" />
+    <Compile Include="BLL\BLL_Menu.cs" />
+    <Compile Include="BLL\BOL_mstr_slu.cs" />
+    <Compile Include="BOL\BOL_Condiment.cs" />
+    <Compile Include="BOL\BOL_Currency.cs" />
+    <Compile Include="BOL\BOL_Master_Combogroup.cs" />
+    <Compile Include="BOL\BOL_Menu.cs" />
+    <Compile Include="BOL\BOL_StockDepartment.cs" />
+    <Compile Include="BOL\BOL_StockGroup.cs" />
+    <Compile Include="BOL\BOL_StockType.cs" />
+    <Compile Include="BOL\BOL_Tendermedia.cs" />
+    <Compile Include="BOL\BOL_TenderMediaSLU.cs" />
+    <Compile Include="Controllers\FamilyGroupController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
-    <Compile Include="Controllers\ValuesController.cs" />
+    <Compile Include="Controllers\MajorGroupController.cs" />
+    <Compile Include="Controllers\MenuController.cs" />
+    <Compile Include="Controllers\ReportGroupController.cs" />
+    <Compile Include="DAL\DAL_Menu.cs" />
+    <Compile Include="DAL\Helper.cs" />
+    <Compile Include="DAL\SqlConjunction.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -198,7 +215,9 @@
     <Content Include="Scripts\jquery-3.3.1.slim.js" />
     <Content Include="Scripts\jquery-3.3.1.slim.min.js" />
     <Content Include="Scripts\modernizr-2.8.3.js" />
-    <Content Include="Web.config" />
+    <Content Include="Web.config">
+      <SubType>Designer</SubType>
+    </Content>
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </Content>

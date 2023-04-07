@@ -13,12 +13,21 @@ namespace QSSAPI
 
             // Web API routes
             config.MapHttpAttributeRoutes();
-
+            //config.IgnoreRoute("{resource}.axd/{*pathInfo}");
+            //config.Routes.IgnoreRoute("{resource}.axd/{*pathInfo}");
             config.Routes.MapHttpRoute(
-                name: "DefaultApi",
-                routeTemplate: "api/{controller}/{id}",
-                defaults: new { id = RouteParameter.Optional }
+            name: "api",
+            routeTemplate: "api/{controller}/{action}/{id}",
+                  defaults: new { id = RouteParameter.Optional }
+            //defaults: new { controller = "Menu", action = "GetMajorGroup" }
+
             );
+            //config.Routes.MapHttpRoute(
+            //    name: "DefaultApi",
+            //    routeTemplate: "api/{controller}/{id}",
+            //    defaults: new { id = RouteParameter.Optional }
+            //);
+
         }
     }
 }

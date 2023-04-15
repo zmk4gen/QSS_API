@@ -84,15 +84,21 @@ namespace QSSAPI.Controllers
         }
 
         // POST: api/Menu
-        public HttpResponseMessage Post([FromBody]string value)
+        public HttpResponseMessage Post()
         {
 
             BLL_Menu obj = new BLL_Menu();
             List<BOL_stock> objList = new List<BOL_stock>();
             StreamReader reader = new StreamReader(HttpContext.Current.Request.InputStream);
-            //reader.BaseStream.Position = 0;
+            reader.BaseStream.Position = 0;
             
             string requestFromPost = reader.ReadToEnd();
+
+            var format = "dd/MM/yyyy"; // your datetime format
+            var dateTimeConverter = new Helper() ;
+
+
+
             objList = JsonConvert.DeserializeObject<List<BOL_stock>>(requestFromPost);//may raise exception because of the json string => format error
 
             string result = "";

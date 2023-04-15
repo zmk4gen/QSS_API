@@ -50,7 +50,7 @@ namespace QSSAPI.DAL
         public int Insert_MenuItem(BOL_stock bol_menu)
         {
             SqlCommand cmd = new SqlCommand();
-            cmd.CommandText = "InsertMenuItem";
+            cmd.CommandText = "InsertStock_API";
             cmd.CommandType = CommandType.StoredProcedure;
 
             cmd.Parameters.AddWithValue("@stock_no", bol_menu.stock_no);
@@ -58,7 +58,7 @@ namespace QSSAPI.DAL
             cmd.Parameters.AddWithValue("@stock_description2", bol_menu.stock_description2);
             cmd.Parameters.AddWithValue("@stock_description3", bol_menu.stock_description3);
             cmd.Parameters.AddWithValue("@st_barcode", bol_menu.st_barcode);
-
+            cmd.Parameters.AddWithValue("@st_cost", bol_menu.st_cost);
             cmd.Parameters.AddWithValue("@st_DeptID", bol_menu.st_DeptID);
             cmd.Parameters.AddWithValue("@st_StockGroupID", bol_menu.st_StockGroupID);
             cmd.Parameters.AddWithValue("@st_StockType", bol_menu.st_StockType);
@@ -78,8 +78,8 @@ namespace QSSAPI.DAL
             }
             else
             {
-                cmd.Parameters.AddWithValue("@st_CreateDate", bol_menu.st_Discount);
-                cmd.Parameters.AddWithValue("@st_LastUpdate", bol_menu.st_forSO);
+                cmd.Parameters.AddWithValue("@st_CreateDate", bol_menu.st_CreateDate);
+                cmd.Parameters.AddWithValue("@st_LastUpdate", bol_menu.st_LastUpdate);
             }
             cmd.Parameters.AddWithValue("@st_Discount", bol_menu.st_Discount);
             cmd.Parameters.AddWithValue("@st_forSO", bol_menu.st_forSO);
@@ -103,6 +103,7 @@ namespace QSSAPI.DAL
             cmd.Parameters.AddWithValue("@st_count", bol_menu.st_count);
             cmd.Parameters.AddWithValue("@st_fireonthefly", bol_menu.st_fireonthefly);
             cmd.Parameters.AddWithValue("@st_kdsgroup", bol_menu.st_kdsgroup);
+            cmd.Parameters.AddWithValue("@st_UpdateBy", bol_menu.st_UpdateBy);
             return SqlConjunction.GetSQLTransVoid(cmd);
         }
     }

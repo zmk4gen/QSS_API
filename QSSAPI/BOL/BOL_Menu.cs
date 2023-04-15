@@ -9,7 +9,7 @@ namespace QSSAPI.BOL
     {
         public int stock_id { get; set; }
 
-        public int stock_no { get; set; }
+        public string stock_no { get; set; }
             
         public string stock_description { get; set; }
 
@@ -62,7 +62,7 @@ namespace QSSAPI.BOL
 
         public DateTime st_effectiveto { get; set; }
 
-        public DateTime st_effectivedate { get; set; }
+        public bool st_effectivedate { get; set; }
         public int st_keyboardnumber { get; set; }
         public bool st_printOnGuestCheck { get; set; }
         public bool st_PrintOnReceipt { get; set; }
@@ -70,6 +70,7 @@ namespace QSSAPI.BOL
         public string st_kdstimer { get; set; }
         public string st_pcscount { get; set; }
         public string st_count { get; set; }
+        public decimal st_cost { get; set; }
         public string st_fireonthefly { get; set; }
         public string st_kdsgroup { get; set; }
     }

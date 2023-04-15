@@ -156,7 +156,10 @@
     <Compile Include="Areas\HelpPage\SampleGeneration\TextSample.cs" />
     <Compile Include="Areas\HelpPage\XmlDocumentationProvider.cs" />
     <Compile Include="BLL\BLL_Menu.cs" />
-    <Compile Include="BLL\BOL_mstr_slu.cs" />
+    <Compile Include="BLL\BLL_StockDepartment.cs" />
+    <Compile Include="BLL\BLL_StockGroup.cs" />
+    <Compile Include="BLL\BLL_StockType.cs" />
+    <Compile Include="BOL\BOL_mstr_slu.cs" />
     <Compile Include="BOL\BOL_Condiment.cs" />
     <Compile Include="BOL\BOL_Currency.cs" />
     <Compile Include="BOL\BOL_Master_Combogroup.cs" />
@@ -172,6 +175,9 @@
     <Compile Include="Controllers\MenuController.cs" />
     <Compile Include="Controllers\ReportGroupController.cs" />
     <Compile Include="DAL\DAL_Menu.cs" />
+    <Compile Include="DAL\DAL_StocckDepartment.cs" />
+    <Compile Include="DAL\DAL_StockGroup.cs" />
+    <Compile Include="DAL\DAL_StockType.cs" />
     <Compile Include="DAL\Helper.cs" />
     <Compile Include="DAL\SqlConjunction.cs" />
     <Compile Include="Global.asax.cs">

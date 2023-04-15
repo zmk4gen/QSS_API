@@ -1,13 +1,16 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Configuration;
 using System.Data;
 using System.IO;
+using System.Linq;
 using System.Net;
 using System.Net.Http;
 using System.Net.Http.Headers;
 using System.Web;
 using System.Web.Http;
 using Newtonsoft.Json;
+
 using QSSAPI.BLL;
 using DAL;
 using QSSAPI.BOL;
@@ -87,16 +90,25 @@ namespace QSSAPI.Controllers
             BLL_Menu obj = new BLL_Menu();
             List<BOL_stock> objList = new List<BOL_stock>();
             StreamReader reader = new StreamReader(HttpContext.Current.Request.InputStream);
-            reader.BaseStream.Position = 0;
+            //reader.BaseStream.Position = 0;
+            
             string requestFromPost = reader.ReadToEnd();
             objList = JsonConvert.DeserializeObject<List<BOL_stock>>(requestFromPost);//may raise exception because of the json string => format error
+
             string result = "";
             foreach (BOL_stock temp in objList)
             {
                 result += obj.InsertMenuItem(temp) + ";";
 
             }
-            return Request.CreateResponse(HttpStatusCode.OK, result);
+
+            if (result != null)
+            {
+
+            }
+
+
+            return Request.CreateResponse(result);
         }
 
         // PUT: api/Menu/5

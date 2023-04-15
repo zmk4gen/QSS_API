@@ -1,14 +1,19 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
+using Newtonsoft.Json;
+using System.Collections.Generic;
 using System.Net;
 using System.Net.Http;
 using System.Web.Http;
 using System.Data;
+using System.IO;
 
 using QSSAPI.BLL;
 using DAL;
+using QSSAPI.BOL;
+
 using System.Net.Http.Headers;
+using System.Web;
 
 namespace QSSAPI.Controllers
 {
@@ -42,7 +47,7 @@ namespace QSSAPI.Controllers
         private HttpResponseMessage GetMajorGroup()
         {
             HttpResponseMessage res = new HttpResponseMessage();
-            BLL_Menu obj = new BLL_Menu();
+            BLL_StockDepartment obj = new BLL_StockDepartment();
             //List<BOLMenuItem> objList = obj.BindMenuItem_List();
             DataTable objList = obj.BindMajorGroup();
             objList.TableName = "MajorGroup";
@@ -55,7 +60,7 @@ namespace QSSAPI.Controllers
         private HttpResponseMessage GetMajorGroupByCode(string code)
         {
             HttpResponseMessage res = new HttpResponseMessage();
-            BLL_Menu obj = new BLL_Menu();
+            BLL_StockDepartment obj = new BLL_StockDepartment();
             //List<BOLMenuItem> objList = obj.BindMenuItem_List();
             DataTable objList = obj.BindMajorGroupByCode(code);
             objList.TableName = "MajorGroup";
@@ -67,7 +72,7 @@ namespace QSSAPI.Controllers
         private HttpResponseMessage GetMajorGroupByName(string name)
         {
             HttpResponseMessage res = new HttpResponseMessage();
-            BLL_Menu obj = new BLL_Menu();
+            BLL_StockDepartment obj = new BLL_StockDepartment();
             //List<BOLMenuItem> objList = obj.BindMenuItem_List();
             DataTable objList = obj.BindMajorGroupByName(name);
             objList.TableName = "MajorGroup";
@@ -77,13 +82,45 @@ namespace QSSAPI.Controllers
             return res;
         }
         // POST: api/MajorGroup
-        public void Post([FromBody]string value)
+        public HttpResponseMessage Post([FromBody]string value)
         {
+            BLL_StockDepartment obj = new BLL_StockDepartment();
+            List<BOL_StockDepartment> objList = new List<BOL_StockDepartment>();
+            StreamReader reader = new StreamReader(HttpContext.Current.Request.InputStream);
+            reader.BaseStream.Position = 0;
+            string requestFromPost = reader.ReadToEnd();
+            objList = JsonConvert.DeserializeObject<List<BOL_StockDepartment>>(requestFromPost);//may raise exception because of the json string => format error
+            string result = "";
+            foreach (BOL_StockDepartment temp in objList)
+            {
+                result += obj.InsertMajorGroup(temp) + ";";
+            }
+                return Request.CreateResponse(HttpStatusCode.OK, result);
         }
+
+        //private HttpResponseMessage InsertMenuMajorGroup()
+        //{
+
+        //    BLL_StockDepartment obj = new BLL_StockDepartment();
+        //    List<BOL_StockDepartment> objList = new List<BOL_StockDepartment>();
+        //    StreamReader reader = new StreamReader(HttpContext.Current.Request.InputStream);
+        //    reader.BaseStream.Position = 0;
+        //    string requestFromPost = reader.ReadToEnd();
+        //    objList = JsonConvert.DeserializeObject<List<BOL_StockDepartment>>(requestFromPost);//may raise exception because of the json string => format error
+        //    string result = "";
+        //    foreach (BOL_StockDepartment temp in objList)
+        //    {
+        //        result += obj.InsertMajorGroup(temp) + ";";
+        //    }
+        //    return Request.CreateResponse(HttpStatusCode.OK, result);
+        //}
+
+
 
         // PUT: api/MajorGroup/5
         public void Put(int id, [FromBody]string value)
         {
+
         }
 
         // DELETE: api/MajorGroup/5

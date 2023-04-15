@@ -10,7 +10,7 @@ namespace QSSAPI.BOL
         public int stock_id { get; set; }
 
         public int stock_no { get; set; }
-
+            
         public string stock_description { get; set; }
 
         public string stock_description2 { get; set; }

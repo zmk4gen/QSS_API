@@ -5,10 +5,15 @@ using System.Net;
 using System.Net.Http;
 using System.Web.Http;
 using System.Data;
+using System.IO;
+using Newtonsoft.Json;
 
 using QSSAPI.BLL;
 using DAL;
+using QSSAPI.BOL;
 using System.Net.Http.Headers;
+using System.Web;
+
 namespace QSSAPI.Controllers
 {
     public class ReportGroupController : ApiController
@@ -37,7 +42,7 @@ namespace QSSAPI.Controllers
         private HttpResponseMessage GetAllReportGroup()
         {
             HttpResponseMessage res = new HttpResponseMessage();
-            BLL_Menu obj = new BLL_Menu();
+            BLL_StockType obj = new BLL_StockType();
             //List<BOLMenuItem> objList = obj.BindMenuItem_List();
             DataTable objList = obj.BindReportGroup();
             objList.TableName = "MenuItem";
@@ -51,9 +56,9 @@ namespace QSSAPI.Controllers
         private HttpResponseMessage ReportGroupByCode(string code)
         {
             HttpResponseMessage res = new HttpResponseMessage();
-            BLL_Menu obj = new BLL_Menu();
+            BLL_StockType obj = new BLL_StockType();
             //List<BOLMenuItem> objList = obj.BindMenuItem_List();
-            DataTable objList = obj.BindFamilyGroupByCode(code);
+            DataTable objList = obj.BindReportGroupByCode(code);
             objList.TableName = "MenuItem";
             //String message = "success";
             res = Request.CreateResponse(HttpStatusCode.OK, objList);
@@ -64,9 +69,9 @@ namespace QSSAPI.Controllers
         private HttpResponseMessage ReportGroupByDesc(string Desc)
         {
             HttpResponseMessage res = new HttpResponseMessage();
-            BLL_Menu obj = new BLL_Menu();
+            BLL_StockType obj = new BLL_StockType();
             //List<BOLMenuItem> objList = obj.BindMenuItem_List();
-            DataTable objList = obj.BindFamilyGroupByName(Desc);
+            DataTable objList = obj.BindReportGroupByDesc(Desc);
             objList.TableName = "MenuItem";
             //String message = "success";
             res = Request.CreateResponse(HttpStatusCode.OK, objList);
@@ -75,10 +80,39 @@ namespace QSSAPI.Controllers
         }
 
         // POST: api/ReportGroup
-        public void Post([FromBody]string value)
+        public HttpResponseMessage Post([FromBody]string value)
         {
+            BLL_StockType obj = new BLL_StockType();
+            List<BOL_StockType> objList = new List<BOL_StockType>();
+            StreamReader reader = new StreamReader(HttpContext.Current.Request.InputStream);
+            reader.BaseStream.Position = 0;
+            string requestFromPost = reader.ReadToEnd();
+            objList = JsonConvert.DeserializeObject<List<BOL_StockType>>(requestFromPost);//may raise exception because of the json string => format error
+            string result = "";
+            foreach (BOL_StockType temp in objList)
+            {
+                result += obj.InsertReportGroup(temp) + ";";
+            }
+            return Request.CreateResponse(HttpStatusCode.OK, result);
         }
 
+
+        //private HttpResponseMessage InsertReportGroup()
+        //{
+
+        //    BLL_StockType obj = new BLL_StockType();
+        //    List<BOL_StockType> objList = new List<BOL_StockType>();
+        //    StreamReader reader = new StreamReader(HttpContext.Current.Request.InputStream);
+        //    reader.BaseStream.Position = 0;
+        //    string requestFromPost = reader.ReadToEnd();
+        //    objList = JsonConvert.DeserializeObject<List<BOL_StockType>>(requestFromPost);//may raise exception because of the json string => format error
+        //    string result = "";
+        //    foreach (BOL_StockType temp in objList)
+        //    {
+        //        result += obj.InsertReportGroup(temp) + ";";
+        //    }
+        //    return Request.CreateResponse(HttpStatusCode.OK, result);
+        //}
         // PUT: api/ReportGroup/5
         public void Put(int id, [FromBody]string value)
         {

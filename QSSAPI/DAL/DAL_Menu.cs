@@ -113,11 +113,11 @@ namespace QSSAPI.DAL
 
         public DataTable SelectbyMenuItem(string stockno)
         {
-            SqlCommand cmd = new SqlCommand();
+            SqlCommand cmd = new SqlCommand(); 
             cmd.CommandText = "BindMenuitem_API";
             cmd.CommandType = CommandType.StoredProcedure;
             cmd.Parameters.AddWithValue("@stockno", stockno);
-            cmd.Parameters.AddWithValue("@st_ingredient", false);
+            cmd.Parameters.AddWithValue("@st_ingredient", true);
             return SqlConjunction.GetSQLDataTable(cmd);
         }
 

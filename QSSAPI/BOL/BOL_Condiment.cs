@@ -13,6 +13,7 @@ namespace QSSAPI.BOL
         public string cond_name3 { get; set; }
         public int cond_qty { get; set; }
         public int cond_style { get; set; }
+        public int cond_hhtstyle { get; set; }
         public string cond_typedef { get; set; }
         public string cond_inactive { get; set; }
         public DateTime cond_createdate { get; set; }

@@ -191,12 +191,8 @@
     <Compile Include="BLL\BLL_Condiment.cs" />
     <Compile Include="BLL\BLL_Currency.cs" />
     <Compile Include="BLL\BLL_MasterComboGroup.cs" />
-    <Compile Include="BLL\BLL_Menu.cs" />
     <Compile Include="BLL\BLL_mstr_slu.cs" />
-    <Compile Include="BLL\BLL_StockGroup.cs" />
-    <Compile Include="BLL\BLL_StockType.cs" />
     <Compile Include="BLL\BLL_TenderMedia.cs" />
-
     <Compile Include="BOL\BOL_mstr_slu.cs" />
     <Compile Include="BOL\BOL_Condiment.cs" />
     <Compile Include="BOL\BOL_Currency.cs" />
@@ -213,20 +209,17 @@
     <Compile Include="BOL\BOL_StockDepartment.cs" />
     <Compile Include="BOL\BOL_StockGroup.cs" />
     <Compile Include="BOL\BOL_StockType.cs" />
-
     <Compile Include="BOL\BOL_Tax.cs" />
     <Compile Include="BOL\BOL_Tax_and_SVC_Amount.cs" />
     <Compile Include="BOL\BOL_Tendermedia.cs" />
     <Compile Include="BOL\BOL_TenderMediaSLU.cs" />
     <Compile Include="Controllers\CondimentController.cs" />
     <Compile Include="Controllers\CurrencyController.cs" />
-    <Compile Include="Controllers\FamilyGroupController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\MajorGroupController.cs" />
     <Compile Include="Controllers\MasterComboGroupController.cs" />
     <Compile Include="Controllers\MenuController.cs" />
     <Compile Include="Controllers\mstr_sluController.cs" />
-    <Compile Include="Controllers\ReportGroupController.cs" />
     <Compile Include="Controllers\SalesOrderController.cs" />
     <Compile Include="DAL\DAL_Delivery_Info.cs" />
     <Compile Include="DAL\DAL_Generic.cs" />
@@ -239,16 +232,13 @@
     <Compile Include="DAL\DAL_Sales_Details.cs" />
     <Compile Include="DAL\DAL_StocckDepartment.cs" />
     <Compile Include="DAL\DAL_StockGroup.cs" />
-    <Compile Include="DAL\DAL_StockType.cs" />
     <Compile Include="Controllers\StockGroupController.cs" />
     <Compile Include="Controllers\StockTypeController.cs" />
     <Compile Include="Controllers\TenderMediaController.cs" />
     <Compile Include="DAL\DAL_Condiment.cs" />
     <Compile Include="DAL\DAL_Currency.cs" />
     <Compile Include="DAL\DAL_MasterComboGroup.cs" />
-    <Compile Include="DAL\DAL_Menu.cs" />
     <Compile Include="DAL\DAL_mstr_slu.cs" />
-    <Compile Include="DAL\DAL_StockGroup.cs" />
     <Compile Include="DAL\DAL_StockType.cs" />
     <Compile Include="DAL\DAL_TenderMedia.cs" />
     <Compile Include="DAL\Helper.cs" />

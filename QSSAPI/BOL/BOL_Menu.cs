@@ -73,5 +73,21 @@ namespace QSSAPI.BOL
         public decimal st_cost { get; set; }
         public string st_fireonthefly { get; set; }
         public string st_kdsgroup { get; set; }
+        /// <summary>
+        /// Stock Price
+        /// </summary>
+        public int pt_sprice { get; set; }
+        /// <summary>
+        /// Branch
+        /// </summary>
+        public int branchid { get; set; }
+        public int location_id { get; set; }
+        public string price_group { get; set; }
+        /// <summary>
+        /// Stock Qty
+        /// </summary>
+        public int stock_qty { get; set; }
+
+
     }
 }

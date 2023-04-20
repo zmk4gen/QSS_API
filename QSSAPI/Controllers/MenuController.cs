@@ -96,21 +96,42 @@ namespace QSSAPI.Controllers
 
             var format = "dd/MM/yyyy"; // your datetime format
             var dateTimeConverter = new Helper() ;
-
-
-
             objList = JsonConvert.DeserializeObject<List<BOL_stock>>(requestFromPost);//may raise exception because of the json string => format error
 
             string result = "";
+
+            var branchinfo = obj.SelectAllBranch();
+            string branch_id = "";
+            string location_id = "";
+            string pricegroup = "";
+            foreach (DataRow row in branchinfo.Rows)
+            {
+                branch_id = row["br_ID"].ToString();
+                location_id = row["br_LocationID"].ToString();
+                pricegroup= row["br_Pricegroup"].ToString();
+            }
+
             foreach (BOL_stock temp in objList)
             {
+                
                 result += obj.InsertMenuItem(temp) + ";";
 
             }
+            
 
             if (result != null)
             {
+                foreach (BOL_stock temp in objList)
+                {
+                    var id = result.Trim(';');
 
+                    temp.stock_id = Convert.ToInt32(id);
+                    temp.branchid = Convert.ToInt32(branch_id);
+                    temp.location_id = Convert.ToInt32(location_id);
+                    temp.price_group = pricegroup;
+                    result += obj.InsertStockPrice(temp) + ";";
+                    result += obj.InsertStockQty(temp) + ";";
+                }
             }
 
 

@@ -15,7 +15,7 @@ namespace QSSAPI.DAL
         public static string DataConn = ConfigurationSettings.AppSettings.Get("SQLConn");
         //public static string DataConn = ConfigurationManager.ConnectionStrings["SQLConn"].ConnectionString;
         static SqlTransaction transaction;
-        static SqlConnection connection = new SqlConnection(DataConn);
+     public   static SqlConnection connection = new SqlConnection(DataConn);
 
         public static void StartTransaction()
         {
@@ -108,12 +108,25 @@ namespace QSSAPI.DAL
         public static int GetSQLTransVoid(SqlCommand sqlCmd)
         {
             int int_Result = 0;
+            int id = 0;
             try
             {
                 sqlCmd.Connection = connection;
                 sqlCmd.Transaction = transaction;
 
-                int_Result = sqlCmd.ExecuteNonQuery();
+                int_Result = Convert.ToInt32(sqlCmd.ExecuteNonQuery());
+                 id = Convert.ToInt32(sqlCmd.Parameters["@id"].Value.ToString());
+                //connection.Open();
+                //object returnObj = sqlCmd.ExecuteScalar();
+
+                //int_Result = Convert.ToInt32(sqlCmd.ExecuteScalar());
+
+                //if (returnObj != null)
+                //{
+                //    int.TryParse(returnObj.ToString(), out int_Result);
+                //}
+
+                //connection.Close();
             }
             catch (SqlException sqx)
             {
@@ -125,7 +138,7 @@ namespace QSSAPI.DAL
                 //connection.Close();
             }
 
-            return int_Result;
+            return id;
         }
 
         public static int GetSQLTransScalar(SqlCommand sqlCmd)

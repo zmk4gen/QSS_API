@@ -31,6 +31,11 @@ namespace QSSAPI.BLL
                 DAL_Menu dal_menuItem = new DAL_Menu();
                 return dal_menuItem.SearchbyMenuItem(desc);
             }
+        public DataTable SelectAllBranch()
+        {
+            DAL_Menu dal_menuItem = new DAL_Menu();
+            return dal_menuItem.Branch_SelectAll();
+        }
         public int InsertMenuItem(BOL_stock bolmenuitem)
         {
             int effectID = 0;
@@ -40,6 +45,45 @@ namespace QSSAPI.BLL
 
                 DAL_Menu dalmenuitem = new DAL_Menu();
                 effectID = dalmenuitem.Insert_MenuItem(bolmenuitem);
+
+                SqlConjunction.CommitTransaction();
+
+            }
+            catch (Exception ex)
+            {
+                SqlConjunction.RollbackTransaction(ex.Message);
+            }
+            return effectID;
+        }
+
+        public int InsertStockPrice(BOL_stock bolmenuitem)
+        {
+            int effectID = 0;
+            try
+            {
+                SqlConjunction.StartTransaction();
+
+                DAL_Menu dalmenuitem = new DAL_Menu();
+                effectID = dalmenuitem.Insert_StockPrice(bolmenuitem);
+
+                SqlConjunction.CommitTransaction();
+
+            }
+            catch (Exception ex)
+            {
+                SqlConjunction.RollbackTransaction(ex.Message);
+            }
+            return effectID;
+        }
+        public int InsertStockQty(BOL_stock bolmenuitem)
+        {
+            int effectID = 0;
+            try
+            {
+                SqlConjunction.StartTransaction();
+
+                DAL_Menu dalmenuitem = new DAL_Menu();
+                effectID = dalmenuitem.Insert_StockQty(bolmenuitem);
 
                 SqlConjunction.CommitTransaction();
 

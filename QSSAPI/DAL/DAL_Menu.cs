@@ -47,6 +47,14 @@ namespace QSSAPI.DAL
             return SqlConjunction.GetSQLDataTable(cmd);
         }
 
+        public DataTable Branch_SelectAll()
+        {
+            SqlCommand cmd = new SqlCommand();
+            cmd.CommandText = "Branch_SelectAll";
+            cmd.CommandType = CommandType.StoredProcedure;
+            return SqlConjunction.GetSQLDataTable(cmd);
+        }
+
         public int Insert_MenuItem(BOL_stock bol_menu)
         {
             SqlCommand cmd = new SqlCommand();
@@ -104,7 +112,38 @@ namespace QSSAPI.DAL
             cmd.Parameters.AddWithValue("@st_fireonthefly", bol_menu.st_fireonthefly);
             cmd.Parameters.AddWithValue("@st_kdsgroup", bol_menu.st_kdsgroup);
             cmd.Parameters.AddWithValue("@st_UpdateBy", bol_menu.st_UpdateBy);
+            cmd.Parameters.Add("@id", SqlDbType.Int).Direction = ParameterDirection.Output;
+            return SqlConjunction.GetSQLTransVoid(cmd);
+        }
+        public int Insert_StockPrice(BOL_stock bol_menu)
+        {
+            SqlCommand cmd = new SqlCommand();
+            cmd.CommandText = "InsertStockPrice_API";
+            cmd.CommandType = CommandType.StoredProcedure;
+
+            cmd.Parameters.AddWithValue("@stock_id", bol_menu.stock_id);
+            cmd.Parameters.AddWithValue("@pt_sprice", bol_menu.pt_sprice);
+            cmd.Parameters.AddWithValue("@price_group", bol_menu.price_group);
+            cmd.Parameters.AddWithValue("@st_LastUpdate", bol_menu.st_LastUpdate);
+            cmd.Parameters.Add("@id", SqlDbType.Int).Direction = ParameterDirection.Output;
+            return SqlConjunction.GetSQLTransVoid(cmd);
+        }
+        public int Insert_StockQty(BOL_stock bol_menu)
+        {
+            SqlCommand cmd = new SqlCommand();
+            cmd.CommandText = "InsertStockQty_API";
+            cmd.CommandType = CommandType.StoredProcedure;
+
+            cmd.Parameters.AddWithValue("@stock_id", bol_menu.stock_id);
+            cmd.Parameters.AddWithValue("@stock_no", bol_menu.stock_no);
+            cmd.Parameters.AddWithValue("@sq_qty", bol_menu.stock_qty);
+            cmd.Parameters.AddWithValue("@sq_location", bol_menu.location_id);
+            cmd.Parameters.AddWithValue("@branch_id", bol_menu.branchid);
+            cmd.Parameters.AddWithValue("@sq_lastupdate", bol_menu.st_LastUpdate);
+            cmd.Parameters.Add("@id", SqlDbType.Int).Direction = ParameterDirection.Output;
             return SqlConjunction.GetSQLTransVoid(cmd);
         }
     }
+
+   
 }

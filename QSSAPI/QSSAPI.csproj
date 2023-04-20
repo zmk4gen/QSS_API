@@ -155,18 +155,39 @@
     <Compile Include="Areas\HelpPage\SampleGeneration\SampleDirection.cs" />
     <Compile Include="Areas\HelpPage\SampleGeneration\TextSample.cs" />
     <Compile Include="Areas\HelpPage\XmlDocumentationProvider.cs" />
+    <Compile Include="BLL\BLL_Delivery_Info.cs" />
+    <Compile Include="BLL\BLL_Generic.cs" />
+    <Compile Include="BLL\BLL_GetMenu.cs" />
     <Compile Include="BLL\BLL_Menu.cs" />
+    <Compile Include="BLL\BLL_Order_Notification.cs" />
+    <Compile Include="BLL\BLL_Order_Raw_Data.cs" />
+    <Compile Include="BLL\BLL_Sales.cs" />
+    <Compile Include="BLL\BLL_SalesDetails_Discount.cs" />
+    <Compile Include="BLL\BLL_Sales_Details.cs" />
     <Compile Include="BLL\BLL_StockDepartment.cs" />
     <Compile Include="BLL\BLL_StockGroup.cs" />
     <Compile Include="BLL\BLL_StockType.cs" />
+    <Compile Include="BOL\BOL_DataObjectwithThirdParty.cs" />
+    <Compile Include="BOL\BOL_Delivery_Info.cs" />
+    <Compile Include="BOL\BOL_Discount.cs" />
     <Compile Include="BOL\BOL_mstr_slu.cs" />
     <Compile Include="BOL\BOL_Condiment.cs" />
     <Compile Include="BOL\BOL_Currency.cs" />
     <Compile Include="BOL\BOL_Master_Combogroup.cs" />
     <Compile Include="BOL\BOL_Menu.cs" />
+    <Compile Include="BOL\BOL_Order_Notification.cs" />
+    <Compile Include="BOL\BOL_Order_Object.cs" />
+    <Compile Include="BOL\BOL_Order_Raw_Data.cs" />
+    <Compile Include="BOL\BOL_RequestParameters.cs" />
+    <Compile Include="BOL\BOL_Sales.cs" />
+    <Compile Include="BOL\BOL_SalesDetails_Discount.cs" />
+    <Compile Include="BOL\BOL_Sales_Details.cs" />
+    <Compile Include="BOL\BOL_ServiceCharge.cs" />
     <Compile Include="BOL\BOL_StockDepartment.cs" />
     <Compile Include="BOL\BOL_StockGroup.cs" />
     <Compile Include="BOL\BOL_StockType.cs" />
+    <Compile Include="BOL\BOL_Tax.cs" />
+    <Compile Include="BOL\BOL_Tax_and_SVC_Amount.cs" />
     <Compile Include="BOL\BOL_Tendermedia.cs" />
     <Compile Include="BOL\BOL_TenderMediaSLU.cs" />
     <Compile Include="Controllers\FamilyGroupController.cs" />
@@ -174,7 +195,16 @@
     <Compile Include="Controllers\MajorGroupController.cs" />
     <Compile Include="Controllers\MenuController.cs" />
     <Compile Include="Controllers\ReportGroupController.cs" />
+    <Compile Include="Controllers\SalesOrderController.cs" />
+    <Compile Include="DAL\DAL_Delivery_Info.cs" />
+    <Compile Include="DAL\DAL_Generic.cs" />
+    <Compile Include="DAL\DAL_GetMenu.cs" />
     <Compile Include="DAL\DAL_Menu.cs" />
+    <Compile Include="DAL\DAL_Order_Notification.cs" />
+    <Compile Include="DAL\DAL_Order_Raw_Data.cs" />
+    <Compile Include="DAL\DAL_Sales.cs" />
+    <Compile Include="DAL\DAL_SalesDetails_Discount.cs" />
+    <Compile Include="DAL\DAL_Sales_Details.cs" />
     <Compile Include="DAL\DAL_StocckDepartment.cs" />
     <Compile Include="DAL\DAL_StockGroup.cs" />
     <Compile Include="DAL\DAL_StockType.cs" />
@@ -183,6 +213,8 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Helpers\Generic.cs" />
+    <Compile Include="Helpers\HelperClass.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

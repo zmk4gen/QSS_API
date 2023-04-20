@@ -5,7 +5,7 @@ using System.Web;
 
 namespace QSSAPI.BOL
 {
-    public class BOL_Tendermedia
+    public class BOL_TenderMedia
     {
         public int tm_code { get; set; }
 	    public string tm_description { get; set; }
@@ -35,5 +35,7 @@ namespace QSSAPI.BOL
         public string tm_typedef { get; set; }
         public string tm_privilege { get; set; }
         public int tm_cash { get; set; }
+
+        public int tm_currency { get; set; }
     }
 }

@@ -184,7 +184,10 @@
     <Compile Include="BLL\BLL_Sales_Details.cs" />
     <Compile Include="BLL\BLL_StockDepartment.cs" />
     <Compile Include="BLL\BLL_StockGroup.cs" />
+    <Compile Include="BLL\BLL_StockPrice.cs" />
+    <Compile Include="BLL\BLL_StocksQty.cs" />
     <Compile Include="BLL\BLL_StockType.cs" />
+    <Compile Include="BLL\BLL_TaxItem.cs" />
     <Compile Include="BOL\BOL_DataObjectwithThirdParty.cs" />
     <Compile Include="BOL\BOL_Delivery_Info.cs" />
     <Compile Include="BOL\BOL_Discount.cs" />
@@ -208,8 +211,11 @@
     <Compile Include="BOL\BOL_ServiceCharge.cs" />
     <Compile Include="BOL\BOL_StockDepartment.cs" />
     <Compile Include="BOL\BOL_StockGroup.cs" />
+    <Compile Include="BOL\BOL_StockPriceTable.cs" />
+    <Compile Include="BOL\BOL_StocksQty.cs" />
     <Compile Include="BOL\BOL_StockType.cs" />
     <Compile Include="BOL\BOL_Tax.cs" />
+    <Compile Include="BOL\BOL_TaxItem.cs" />
     <Compile Include="BOL\BOL_Tax_and_SVC_Amount.cs" />
     <Compile Include="BOL\BOL_Tendermedia.cs" />
     <Compile Include="BOL\BOL_TenderMediaSLU.cs" />
@@ -221,6 +227,9 @@
     <Compile Include="Controllers\MenuController.cs" />
     <Compile Include="Controllers\mstr_sluController.cs" />
     <Compile Include="Controllers\SalesOrderController.cs" />
+    <Compile Include="Controllers\StockPriceController.cs" />
+    <Compile Include="Controllers\StocksQty_Controller.cs" />
+    <Compile Include="Controllers\TaxItem.cs" />
     <Compile Include="DAL\DAL_Delivery_Info.cs" />
     <Compile Include="DAL\DAL_Generic.cs" />
     <Compile Include="DAL\DAL_GetMenu.cs" />
@@ -239,7 +248,10 @@
     <Compile Include="DAL\DAL_Currency.cs" />
     <Compile Include="DAL\DAL_MasterComboGroup.cs" />
     <Compile Include="DAL\DAL_mstr_slu.cs" />
+    <Compile Include="DAL\DAL_StockPrice.cs" />
+    <Compile Include="DAL\DAL_StockQty.cs" />
     <Compile Include="DAL\DAL_StockType.cs" />
+    <Compile Include="DAL\DAL_TaxItem.cs" />
     <Compile Include="DAL\DAL_TenderMedia.cs" />
     <Compile Include="DAL\Helper.cs" />
     <Compile Include="DAL\SqlConjunction.cs" />

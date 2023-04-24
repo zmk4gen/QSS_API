@@ -176,6 +176,7 @@
     <Compile Include="BLL\BLL_Delivery_Info.cs" />
     <Compile Include="BLL\BLL_Generic.cs" />
     <Compile Include="BLL\BLL_GetMenu.cs" />
+    <Compile Include="BLL\BLL_Location.cs" />
     <Compile Include="BLL\BLL_Menu.cs" />
     <Compile Include="BLL\BLL_Order_Notification.cs" />
     <Compile Include="BLL\BLL_Order_Raw_Data.cs" />
@@ -187,6 +188,8 @@
     <Compile Include="BLL\BLL_StockPrice.cs" />
     <Compile Include="BLL\BLL_StocksQty.cs" />
     <Compile Include="BLL\BLL_StockType.cs" />
+    <Compile Include="BLL\BLL_StoreDetail.cs" />
+    <Compile Include="BLL\BLL_StoreGroup.cs" />
     <Compile Include="BLL\BLL_TaxItem.cs" />
     <Compile Include="BOL\BOL_DataObjectwithThirdParty.cs" />
     <Compile Include="BOL\BOL_Delivery_Info.cs" />
@@ -196,6 +199,7 @@
     <Compile Include="BLL\BLL_MasterComboGroup.cs" />
     <Compile Include="BLL\BLL_mstr_slu.cs" />
     <Compile Include="BLL\BLL_TenderMedia.cs" />
+    <Compile Include="BOL\BOL_Location.cs" />
     <Compile Include="BOL\BOL_mstr_slu.cs" />
     <Compile Include="BOL\BOL_Condiment.cs" />
     <Compile Include="BOL\BOL_Currency.cs" />
@@ -214,6 +218,9 @@
     <Compile Include="BOL\BOL_StockPriceTable.cs" />
     <Compile Include="BOL\BOL_StocksQty.cs" />
     <Compile Include="BOL\BOL_StockType.cs" />
+    <Compile Include="BOL\BOL_StoreDetail.cs" />
+    <Compile Include="BOL\BOL_StoreGroup.cs" />
+    <Compile Include="BOL\BOL_StoreSubGroup.cs" />
     <Compile Include="BOL\BOL_Tax.cs" />
     <Compile Include="BOL\BOL_TaxItem.cs" />
     <Compile Include="BOL\BOL_Tax_and_SVC_Amount.cs" />
@@ -222,6 +229,7 @@
     <Compile Include="Controllers\CondimentController.cs" />
     <Compile Include="Controllers\CurrencyController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\LocationController.cs" />
     <Compile Include="Controllers\MajorGroupController.cs" />
     <Compile Include="Controllers\MasterComboGroupController.cs" />
     <Compile Include="Controllers\MenuController.cs" />
@@ -229,10 +237,15 @@
     <Compile Include="Controllers\SalesOrderController.cs" />
     <Compile Include="Controllers\StockPriceController.cs" />
     <Compile Include="Controllers\StocksQty_Controller.cs" />
+    <Compile Include="Controllers\StoreDetailContraller.cs" />
+    <Compile Include="Controllers\StoreGroupController.cs" />
+    <Compile Include="Controllers\StoreSubGroup_Controller.cs" />
     <Compile Include="Controllers\TaxItem.cs" />
+    <Compile Include="BLL\BLL_StoreSubGroup.cs" />
     <Compile Include="DAL\DAL_Delivery_Info.cs" />
     <Compile Include="DAL\DAL_Generic.cs" />
     <Compile Include="DAL\DAL_GetMenu.cs" />
+    <Compile Include="DAL\DAL_Location.cs" />
     <Compile Include="DAL\DAL_Menu.cs" />
     <Compile Include="DAL\DAL_Order_Notification.cs" />
     <Compile Include="DAL\DAL_Order_Raw_Data.cs" />
@@ -251,6 +264,9 @@
     <Compile Include="DAL\DAL_StockPrice.cs" />
     <Compile Include="DAL\DAL_StockQty.cs" />
     <Compile Include="DAL\DAL_StockType.cs" />
+    <Compile Include="DAL\DAL_StoreDetail.cs" />
+    <Compile Include="DAL\DAL_StoreGroup.cs" />
+    <Compile Include="DAL\DAL_StoreSubGroup.cs" />
     <Compile Include="DAL\DAL_TaxItem.cs" />
     <Compile Include="DAL\DAL_TenderMedia.cs" />
     <Compile Include="DAL\Helper.cs" />

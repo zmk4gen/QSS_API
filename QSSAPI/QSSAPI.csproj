@@ -173,6 +173,7 @@
     <Compile Include="Areas\HelpPage\SampleGeneration\SampleDirection.cs" />
     <Compile Include="Areas\HelpPage\SampleGeneration\TextSample.cs" />
     <Compile Include="Areas\HelpPage\XmlDocumentationProvider.cs" />
+    <Compile Include="BLL\BLL_Dashboard.cs" />
     <Compile Include="BLL\BLL_Delivery_Info.cs" />
     <Compile Include="BLL\BLL_Generic.cs" />
     <Compile Include="BLL\BLL_GetMenu.cs" />
@@ -187,7 +188,10 @@
     <Compile Include="BLL\BLL_StockPrice.cs" />
     <Compile Include="BLL\BLL_StocksQty.cs" />
     <Compile Include="BLL\BLL_StockType.cs" />
+    <Compile Include="BLL\BLL_StoreDetail.cs" />
+    <Compile Include="BLL\BLL_StoreSubGroup.cs" />
     <Compile Include="BLL\BLL_TaxItem.cs" />
+    <Compile Include="BOL\BOL_Dashboard.cs" />
     <Compile Include="BOL\BOL_DataObjectwithThirdParty.cs" />
     <Compile Include="BOL\BOL_Delivery_Info.cs" />
     <Compile Include="BOL\BOL_Discount.cs" />
@@ -214,6 +218,8 @@
     <Compile Include="BOL\BOL_StockPriceTable.cs" />
     <Compile Include="BOL\BOL_StocksQty.cs" />
     <Compile Include="BOL\BOL_StockType.cs" />
+    <Compile Include="BOL\BOL_StoreDetail.cs" />
+    <Compile Include="BOL\BOL_StoreSubGroup.cs" />
     <Compile Include="BOL\BOL_Tax.cs" />
     <Compile Include="BOL\BOL_TaxItem.cs" />
     <Compile Include="BOL\BOL_Tax_and_SVC_Amount.cs" />
@@ -226,10 +232,14 @@
     <Compile Include="Controllers\MasterComboGroupController.cs" />
     <Compile Include="Controllers\MenuController.cs" />
     <Compile Include="Controllers\mstr_sluController.cs" />
+    <Compile Include="Controllers\SalesEnquiryDashboardController.cs" />
     <Compile Include="Controllers\SalesOrderController.cs" />
     <Compile Include="Controllers\StockPriceController.cs" />
     <Compile Include="Controllers\StocksQty_Controller.cs" />
+    <Compile Include="Controllers\StoreDetailContraller.cs" />
+    <Compile Include="Controllers\StoreSubGroup_Controller.cs" />
     <Compile Include="Controllers\TaxItem.cs" />
+    <Compile Include="DAL\DAL_Dashboard.cs" />
     <Compile Include="DAL\DAL_Delivery_Info.cs" />
     <Compile Include="DAL\DAL_Generic.cs" />
     <Compile Include="DAL\DAL_GetMenu.cs" />
@@ -251,6 +261,8 @@
     <Compile Include="DAL\DAL_StockPrice.cs" />
     <Compile Include="DAL\DAL_StockQty.cs" />
     <Compile Include="DAL\DAL_StockType.cs" />
+    <Compile Include="DAL\DAL_StoreDetail.cs" />
+    <Compile Include="DAL\DAL_StoreSubGroup.cs" />
     <Compile Include="DAL\DAL_TaxItem.cs" />
     <Compile Include="DAL\DAL_TenderMedia.cs" />
     <Compile Include="DAL\Helper.cs" />
@@ -371,7 +383,7 @@
           <AutoAssignPort>True</AutoAssignPort>
           <DevelopmentServerPort>50027</DevelopmentServerPort>
           <DevelopmentServerVPath>/</DevelopmentServerVPath>
-          <IISUrl>http://localhost:50027/</IISUrl>
+          <IISUrl>http://localhost:50028/</IISUrl>
           <NTLMAuthentication>False</NTLMAuthentication>
           <UseCustomServer>False</UseCustomServer>
           <CustomServerUrl>

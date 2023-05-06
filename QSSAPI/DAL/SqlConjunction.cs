@@ -115,7 +115,7 @@ namespace QSSAPI.DAL
                 sqlCmd.Transaction = transaction;
 
                 int_Result = Convert.ToInt32(sqlCmd.ExecuteNonQuery());
-                 id = Convert.ToInt32(sqlCmd.Parameters["@id"].Value.ToString());
+                 //id = Convert.ToInt32(sqlCmd.Parameters["@id"].Value.ToString());
                 //connection.Open();
                 //object returnObj = sqlCmd.ExecuteScalar();
 

@@ -23,6 +23,8 @@ namespace QSSAPI.DAL
 
         public DataTable Get_mstr_RVC()
         {
+            SqlCommand cmd = new SqlCommand();
+
             string str_cmd = "select rvc_id, rvc_name1, rvc_typedef from mstr_RVC";
             SqlCommand sqlCmd = new SqlCommand(str_cmd);
             return SqlConjunction.GetSQLDataTable(sqlCmd);

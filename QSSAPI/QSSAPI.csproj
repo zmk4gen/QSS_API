@@ -173,11 +173,8 @@
     <Compile Include="Areas\HelpPage\SampleGeneration\SampleDirection.cs" />
     <Compile Include="Areas\HelpPage\SampleGeneration\TextSample.cs" />
     <Compile Include="Areas\HelpPage\XmlDocumentationProvider.cs" />
-<<<<<<< HEAD
     <Compile Include="BLL\BLL_ClockoutReason.cs" />
-=======
     <Compile Include="BLL\BLL_Dashboard.cs" />
->>>>>>> ba3736ec99159127a7c08dc22d86dbf568fe7f41
     <Compile Include="BLL\BLL_Delivery_Info.cs" />
     <Compile Include="BLL\BLL_Generic.cs" />
     <Compile Include="BLL\BLL_GetMenu.cs" />
@@ -197,14 +194,11 @@
     <Compile Include="BLL\BLL_StoreGroup.cs" />
     <Compile Include="BLL\BLL_StoreSubGroup.cs" />
     <Compile Include="BLL\BLL_TaxItem.cs" />
-<<<<<<< HEAD
     <Compile Include="BLL\BLL_UserDepartment.cs" />
     <Compile Include="BLL\BLL_UserInfo.cs" />
     <Compile Include="BLL\BLL_UserProfile.cs" />
     <Compile Include="BOL\BOL_ClockoutReason.cs" />
-=======
     <Compile Include="BOL\BOL_Dashboard.cs" />
->>>>>>> ba3736ec99159127a7c08dc22d86dbf568fe7f41
     <Compile Include="BOL\BOL_DataObjectwithThirdParty.cs" />
     <Compile Include="BOL\BOL_Delivery_Info.cs" />
     <Compile Include="BOL\BOL_Discount.cs" />
@@ -246,12 +240,14 @@
     <Compile Include="Controllers\ClockoutReasonController.cs" />
     <Compile Include="Controllers\CondimentController.cs" />
     <Compile Include="Controllers\CurrencyController.cs" />
+    <Compile Include="Controllers\FamilyGroupController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\LocationController.cs" />
     <Compile Include="Controllers\MajorGroupController.cs" />
     <Compile Include="Controllers\MasterComboGroupController.cs" />
     <Compile Include="Controllers\MenuController.cs" />
     <Compile Include="Controllers\mstr_sluController.cs" />
+    <Compile Include="Controllers\ReportGroupController.cs" />
     <Compile Include="Controllers\SalesEnquiryDashboardController.cs" />
     <Compile Include="Controllers\SalesOrderController.cs" />
     <Compile Include="Controllers\StockPriceController.cs" />
@@ -261,14 +257,11 @@
     <Compile Include="Controllers\StoreGroupController.cs" />
     <Compile Include="Controllers\StoreSubGroup_Controller.cs" />
     <Compile Include="Controllers\TaxItem.cs" />
-<<<<<<< HEAD
     <Compile Include="BLL\BLL_StoreSubGroup.cs" />
     <Compile Include="Controllers\UserDepartmentController.cs" />
     <Compile Include="Controllers\UserInfoController.cs" />
     <Compile Include="Controllers\UserProfileController.cs" />
     <Compile Include="DAL\DAL_ClockoutReason.cs" />
-=======
->>>>>>> ba3736ec99159127a7c08dc22d86dbf568fe7f41
     <Compile Include="DAL\DAL_Delivery_Info.cs" />
     <Compile Include="DAL\DAL_Generic.cs" />
     <Compile Include="DAL\DAL_GetMenu.cs" />

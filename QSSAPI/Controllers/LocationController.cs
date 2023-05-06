@@ -38,7 +38,7 @@ namespace QSSAPI.Controllers
         }
 
         [HttpGet]
-        private HttpResponseMessage GetAllLocation()
+        public HttpResponseMessage GetAllLocation()
         {
             HttpResponseMessage res = new HttpResponseMessage();
             BLL_Location obj = new BLL_Location();
@@ -53,7 +53,7 @@ namespace QSSAPI.Controllers
 
         [HttpGet]
         [Route("~/api/Location/GetLocationByCode")]
-        private HttpResponseMessage GetLocationByCode(string LocationCode)
+        public HttpResponseMessage GetLocationByCode(string LocationCode)
         {
             HttpResponseMessage res = new HttpResponseMessage();
             BLL_Location obj = new BLL_Location();
@@ -68,7 +68,7 @@ namespace QSSAPI.Controllers
 
         [HttpGet]
         [Route("~/api/Location/GetLocationByName")]
-        private HttpResponseMessage GetLocationByName(string name)
+        public HttpResponseMessage GetLocationByName(string name)
         {
             HttpResponseMessage res = new HttpResponseMessage();
             BLL_Location obj = new BLL_Location();

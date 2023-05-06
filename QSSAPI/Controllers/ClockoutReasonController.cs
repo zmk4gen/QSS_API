@@ -15,35 +15,35 @@ using QSSAPI.BOL;
 namespace QSSAPI.Controllers
 {
     [RoutePrefix("api")]
-    public class CondimentController : ApiController
+    public class ClockoutReasonController : ApiController
     {
         [HttpGet]
-        [Route("~/api/Condiment/Get")]
+        [Route("~/api/ClockoutReason/Get")]
         public HttpResponseMessage Get(string cond_code = null, string name = null)
         {
             HttpResponseMessage res = new HttpResponseMessage();
             if ((cond_code == "" || cond_code == null) && (name == "" || name == null))
             {
-                res = GetAllCondiment();
+                res = GetAllClockoutReason();
             }
             else if (name != "" && name != null)
             {
-                res = GetCondimentByName(name);
+                res = GetClockoutReasonByName(name);
             }
             else
             {
-                res = GetCondimentByCode(cond_code);
+                res = GetClockoutReasonByCode(cond_code);
             }
             return res;
         }
 
         [HttpGet]
-        public HttpResponseMessage GetAllCondiment()
+        public HttpResponseMessage GetAllClockoutReason()
         {
             HttpResponseMessage res = new HttpResponseMessage();
-            BLL_Condiment obj = new BLL_Condiment();
-            DataTable objList = obj.BindCondiment();
-            objList.TableName = "Condiment";
+            BLL_ClockoutReason obj = new BLL_ClockoutReason();
+            DataTable objList = obj.BindClockoutReason();
+            objList.TableName = "ClockoutReason";
 
             res = Request.CreateResponse(HttpStatusCode.OK, objList);
             res.Content.Headers.ContentType = new MediaTypeHeaderValue("application/json");
@@ -52,13 +52,13 @@ namespace QSSAPI.Controllers
         }
 
         [HttpGet]
-        [Route("~/api/Condiment/GetCondimentByCode")]
-        public HttpResponseMessage GetCondimentByCode(string condimentCode)
+        [Route("~/api/ClockoutReason/GetClockoutReasonByCode")]
+        public HttpResponseMessage GetClockoutReasonByCode(string ClockoutReasonCode)
         {
             HttpResponseMessage res = new HttpResponseMessage();
-            BLL_Condiment obj = new BLL_Condiment();
-            DataTable objList = obj.BindCondimentByCode(condimentCode);
-            objList.TableName = "Condiment";
+            BLL_ClockoutReason obj = new BLL_ClockoutReason();
+            DataTable objList = obj.BindClockoutReasonByCode(ClockoutReasonCode);
+            objList.TableName = "ClockoutReason";
 
             res = Request.CreateResponse(HttpStatusCode.OK, objList);
             res.Content.Headers.ContentType = new MediaTypeHeaderValue("application/json");
@@ -67,32 +67,32 @@ namespace QSSAPI.Controllers
         }
 
         [HttpGet]
-        [Route("~/api/Condiment/GetCondimentByName")]
-        public HttpResponseMessage GetCondimentByName(string name)
+        [Route("~/api/ClockoutReason/GetClockoutReasonByName")]
+        public HttpResponseMessage GetClockoutReasonByName(string name)
         {
             HttpResponseMessage res = new HttpResponseMessage();
-            BLL_Condiment obj = new BLL_Condiment();
-            DataTable objList = obj.BindCondimentByName(name);
-            objList.TableName = "Condiment";
+            BLL_ClockoutReason obj = new BLL_ClockoutReason();
+            DataTable objList = obj.BindClockoutReasonByName(name);
+            objList.TableName = "ClockoutReason";
 
             res = Request.CreateResponse(HttpStatusCode.OK, objList);
             res.Content.Headers.ContentType = new MediaTypeHeaderValue("application/json");
             return res;
         }
 
-        // POST api/Condiment
+        // POST api/ClockoutReason
         public HttpResponseMessage Post([FromBody]string value)
         {
-            BLL_Condiment obj = new BLL_Condiment();
-            List<BOL_Condiment> objList = new List<BOL_Condiment>();
+            BLL_ClockoutReason obj = new BLL_ClockoutReason();
+            List<BOL_ClockoutReason> objList = new List<BOL_ClockoutReason>();
             StreamReader reader = new StreamReader(HttpContext.Current.Request.InputStream);
             reader.BaseStream.Position = 0;
             string requestFromPost = reader.ReadToEnd();
-            objList = JsonConvert.DeserializeObject<List<BOL_Condiment>>(requestFromPost);
+            objList = JsonConvert.DeserializeObject<List<BOL_ClockoutReason>>(requestFromPost);
             string result = "";
-            foreach (BOL_Condiment temp in objList)
+            foreach (BOL_ClockoutReason temp in objList)
             {
-                result += obj.InserCondiment(temp) + ";";
+                result += obj.InserClockoutReason(temp) + ";";
             }
             return Request.CreateResponse(HttpStatusCode.OK, result);
         }

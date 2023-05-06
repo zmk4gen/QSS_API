@@ -16,7 +16,7 @@ namespace QSSAPI.BLL
         /// Menu Item
         /// </summary>
         /// <returns></returns>
-      public DataTable BindMenuItem()
+        public DataTable BindMenuItem()
             {
                 DAL_Menu dal_menuitem = new DAL_Menu();
                 return dal_menuitem.BindMenuitem();

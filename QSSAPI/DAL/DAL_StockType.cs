@@ -32,6 +32,7 @@ namespace QSSAPI.DAL
             SqlCommand cmd = new SqlCommand();
             cmd.CommandText = "BindStockType_API";
             cmd.Parameters.AddWithValue("@code", code);
+            cmd.Parameters.AddWithValue("@status", "true");
             cmd.CommandType = CommandType.StoredProcedure;
 
             return SqlConjunction.GetSQLDataTable(cmd);
@@ -53,6 +54,7 @@ namespace QSSAPI.DAL
 
             cmd.CommandType = CommandType.StoredProcedure;
             cmd.Parameters.AddWithValue("@name", name);
+            cmd.Parameters.AddWithValue("@status", "false");
             return SqlConjunction.GetSQLDataTable(cmd);
         }
 

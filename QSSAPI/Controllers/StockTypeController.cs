@@ -54,7 +54,7 @@ namespace QSSAPI.Controllers
         }
 
         [HttpGet]
-        [Route("~/api/StockType/GetStockTypeByCode")]
+        [Route("~/api/StockType/GetStockTypeByStockCode")]
         private HttpResponseMessage GetStockTypeByStockCode(string stockTypeCode)
         {
             HttpResponseMessage res = new HttpResponseMessage();

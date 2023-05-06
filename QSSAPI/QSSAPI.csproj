@@ -173,6 +173,8 @@
     <Compile Include="Areas\HelpPage\SampleGeneration\SampleDirection.cs" />
     <Compile Include="Areas\HelpPage\SampleGeneration\TextSample.cs" />
     <Compile Include="Areas\HelpPage\XmlDocumentationProvider.cs" />
+    <Compile Include="AuthorizeAttribute.cs" />
+    <Compile Include="BLL\BLL_ClockoutReason.cs" />
     <Compile Include="BLL\BLL_Dashboard.cs" />
     <Compile Include="BLL\BLL_Delivery_Info.cs" />
     <Compile Include="BLL\BLL_Generic.cs" />
@@ -193,6 +195,10 @@
     <Compile Include="BLL\BLL_StoreGroup.cs" />
     <Compile Include="BLL\BLL_StoreSubGroup.cs" />
     <Compile Include="BLL\BLL_TaxItem.cs" />
+    <Compile Include="BLL\BLL_UserDepartment.cs" />
+    <Compile Include="BLL\BLL_UserInfo.cs" />
+    <Compile Include="BLL\BLL_UserProfile.cs" />
+    <Compile Include="BOL\BOL_ClockoutReason.cs" />
     <Compile Include="BOL\BOL_Dashboard.cs" />
     <Compile Include="BOL\BOL_DataObjectwithThirdParty.cs" />
     <Compile Include="BOL\BOL_Delivery_Info.cs" />
@@ -229,6 +235,10 @@
     <Compile Include="BOL\BOL_Tax_and_SVC_Amount.cs" />
     <Compile Include="BOL\BOL_Tendermedia.cs" />
     <Compile Include="BOL\BOL_TenderMediaSLU.cs" />
+    <Compile Include="BOL\BOL_UserDepartment.cs" />
+    <Compile Include="BOL\BOL_UserInfo.cs" />
+    <Compile Include="BOL\BOL_UserProfile.cs" />
+    <Compile Include="Controllers\ClockoutReasonController.cs" />
     <Compile Include="Controllers\CondimentController.cs" />
     <Compile Include="Controllers\CurrencyController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
@@ -246,6 +256,10 @@
     <Compile Include="Controllers\StoreGroupController.cs" />
     <Compile Include="Controllers\StoreSubGroup_Controller.cs" />
     <Compile Include="Controllers\TaxItem.cs" />
+    <Compile Include="Controllers\UserDepartmentController.cs" />
+    <Compile Include="Controllers\UserInfoController.cs" />
+    <Compile Include="Controllers\UserProfileController.cs" />
+    <Compile Include="DAL\DAL_ClockoutReason.cs" />
     <Compile Include="DAL\DAL_Delivery_Info.cs" />
     <Compile Include="DAL\DAL_Generic.cs" />
     <Compile Include="DAL\DAL_GetMenu.cs" />
@@ -273,6 +287,9 @@
     <Compile Include="DAL\DAL_StoreSubGroup.cs" />
     <Compile Include="DAL\DAL_TaxItem.cs" />
     <Compile Include="DAL\DAL_TenderMedia.cs" />
+    <Compile Include="DAL\DAL_UserDepartment.cs" />
+    <Compile Include="DAL\DAL_UserInfo.cs" />
+    <Compile Include="DAL\DAL_UserProfile.cs" />
     <Compile Include="DAL\Helper.cs" />
     <Compile Include="DAL\SqlConjunction.cs" />
     <Compile Include="Global.asax.cs">
@@ -280,6 +297,7 @@
     </Compile>
     <Compile Include="Helpers\Generic.cs" />
     <Compile Include="Helpers\HelperClass.cs" />
+    <Compile Include="Models\User.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -339,7 +357,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Models\" />
     <Folder Include="Views\Condiment\" />
     <Folder Include="Views\Currency\" />
     <Folder Include="Views\MasterComboGroup\" />

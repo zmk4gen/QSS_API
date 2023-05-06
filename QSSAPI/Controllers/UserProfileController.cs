@@ -15,35 +15,35 @@ using QSSAPI.BOL;
 namespace QSSAPI.Controllers
 {
     [RoutePrefix("api")]
-    public class CondimentController : ApiController
+    public class UserProfileController : ApiController
     {
         [HttpGet]
-        [Route("~/api/Condiment/Get")]
+        [Route("~/api/UserProfile/Get")]
         public HttpResponseMessage Get(string cond_code = null, string name = null)
         {
             HttpResponseMessage res = new HttpResponseMessage();
             if ((cond_code == "" || cond_code == null) && (name == "" || name == null))
             {
-                res = GetAllCondiment();
+                res = GetAllUserProfile();
             }
             else if (name != "" && name != null)
             {
-                res = GetCondimentByName(name);
+                res = GetUserProfileByName(name);
             }
             else
             {
-                res = GetCondimentByCode(cond_code);
+                res = GetUserProfileByCode(cond_code);
             }
             return res;
         }
 
         [HttpGet]
-        public HttpResponseMessage GetAllCondiment()
+        public HttpResponseMessage GetAllUserProfile()
         {
             HttpResponseMessage res = new HttpResponseMessage();
-            BLL_Condiment obj = new BLL_Condiment();
-            DataTable objList = obj.BindCondiment();
-            objList.TableName = "Condiment";
+            BLL_UserProfile obj = new BLL_UserProfile();
+            DataTable objList = obj.BindUserProfile();
+            objList.TableName = "UserProfile";
 
             res = Request.CreateResponse(HttpStatusCode.OK, objList);
             res.Content.Headers.ContentType = new MediaTypeHeaderValue("application/json");
@@ -52,13 +52,13 @@ namespace QSSAPI.Controllers
         }
 
         [HttpGet]
-        [Route("~/api/Condiment/GetCondimentByCode")]
-        public HttpResponseMessage GetCondimentByCode(string condimentCode)
+        [Route("~/api/UserProfile/GetUserProfileByCode")]
+        public HttpResponseMessage GetUserProfileByCode(string UserProfileCode)
         {
             HttpResponseMessage res = new HttpResponseMessage();
-            BLL_Condiment obj = new BLL_Condiment();
-            DataTable objList = obj.BindCondimentByCode(condimentCode);
-            objList.TableName = "Condiment";
+            BLL_UserProfile obj = new BLL_UserProfile();
+            DataTable objList = obj.BindUserProfileByCode(UserProfileCode);
+            objList.TableName = "UserProfile";
 
             res = Request.CreateResponse(HttpStatusCode.OK, objList);
             res.Content.Headers.ContentType = new MediaTypeHeaderValue("application/json");
@@ -67,32 +67,32 @@ namespace QSSAPI.Controllers
         }
 
         [HttpGet]
-        [Route("~/api/Condiment/GetCondimentByName")]
-        public HttpResponseMessage GetCondimentByName(string name)
+        [Route("~/api/UserProfile/GetUserProfileByName")]
+        public HttpResponseMessage GetUserProfileByName(string name)
         {
             HttpResponseMessage res = new HttpResponseMessage();
-            BLL_Condiment obj = new BLL_Condiment();
-            DataTable objList = obj.BindCondimentByName(name);
-            objList.TableName = "Condiment";
+            BLL_UserProfile obj = new BLL_UserProfile();
+            DataTable objList = obj.BindUserProfileByName(name);
+            objList.TableName = "UserProfile";
 
             res = Request.CreateResponse(HttpStatusCode.OK, objList);
             res.Content.Headers.ContentType = new MediaTypeHeaderValue("application/json");
             return res;
         }
 
-        // POST api/Condiment
+        // POST api/UserProfile
         public HttpResponseMessage Post([FromBody]string value)
         {
-            BLL_Condiment obj = new BLL_Condiment();
-            List<BOL_Condiment> objList = new List<BOL_Condiment>();
+            BLL_UserProfile obj = new BLL_UserProfile();
+            List<BOL_UserProfile> objList = new List<BOL_UserProfile>();
             StreamReader reader = new StreamReader(HttpContext.Current.Request.InputStream);
             reader.BaseStream.Position = 0;
             string requestFromPost = reader.ReadToEnd();
-            objList = JsonConvert.DeserializeObject<List<BOL_Condiment>>(requestFromPost);
+            objList = JsonConvert.DeserializeObject<List<BOL_UserProfile>>(requestFromPost);
             string result = "";
-            foreach (BOL_Condiment temp in objList)
+            foreach (BOL_UserProfile temp in objList)
             {
-                result += obj.InserCondiment(temp) + ";";
+                result += obj.InserUserProfile(temp) + ";";
             }
             return Request.CreateResponse(HttpStatusCode.OK, result);
         }

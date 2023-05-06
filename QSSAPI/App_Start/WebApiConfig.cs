@@ -11,50 +11,6 @@ namespace QSSAPI
         public static void Register(HttpConfiguration config)
         {
             // Web API configuration and services
-
-            // Web API routes
-            //config.MapHttpAttributeRoutes();
-            //config.IgnoreRoute("{resource}.axd/{*pathInfo}");
-            //config.Routes.IgnoreRoute("{resource}.axd/{*pathInfo}");
-            //config.Routes.MapHttpRoute(
-            //name: "api",
-            //routeTemplate: "api/{controller}/{action}/{id}",
-            //      defaults: new { id = RouteParameter.Optional }
-            ////defaults: new { controller = "Menu", action = "GetMajorGroup" }
-
-            //);
-            //config.Routes.MapHttpRoute(
-            //    name: "DefaultApi",
-            //    routeTemplate: "api/{controller}/{id}",
-            //    defaults: new { id = RouteParameter.Optional }
-            //);
-
-
-            ////Customized ROute
-            //config.Routes.MapHttpRoute(
-            //    //name: "api",
-            //    //routeTemplate: "api/{controller}/{action}/{id}",
-            //    //defaults: new { name = RouteParameter.Optional, password = RouteParameter.Optional }
-            //    name: "ActionApi",
-            //    routeTemplate: "api/{controller}/{action}/{id}",
-            //    defaults: new { id = RouteParameter.Optional }
-            //);
-            //Default Route
-            //config.Routes.MapHttpRoute(
-            //    name: "DefaultApi",
-            //    routeTemplate: "api/{controller}/{id}",
-            //    defaults: new { id = RouteParameter.Optional }
-            //);
-
-            //config.MapHttpAttributeRoutes();
-
-            //// define route
-            //IHttpRoute defaultRoute = config.Routes.CreateRoute("api/{controller}/{id}",
-            //                                    new { id = RouteParameter.Optional }, null);
-
-            //// Add route
-            //config.Routes.Add("DefaultApi", defaultRoute);
-
             config.MapHttpAttributeRoutes();
 
             config.Routes.MapHttpRoute(
@@ -68,6 +24,7 @@ namespace QSSAPI
                 routeTemplate: "api/{controller}/{action}/{id}",
                 defaults: new { id = RouteParameter.Optional }
             );
+
         }
     }
 }

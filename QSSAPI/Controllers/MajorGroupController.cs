@@ -44,7 +44,7 @@ namespace QSSAPI.Controllers
 
         [Route("~/api/Menu/GetMajorGroup")]
         [HttpGet]
-        private HttpResponseMessage GetMajorGroup()
+        public HttpResponseMessage GetMajorGroup()
         {
             HttpResponseMessage res = new HttpResponseMessage();
             BLL_StockDepartment obj = new BLL_StockDepartment();
@@ -57,7 +57,7 @@ namespace QSSAPI.Controllers
             return res;
         }
 
-        private HttpResponseMessage GetMajorGroupByCode(string code)
+        public HttpResponseMessage GetMajorGroupByCode(string code)
         {
             HttpResponseMessage res = new HttpResponseMessage();
             BLL_StockDepartment obj = new BLL_StockDepartment();
@@ -69,7 +69,7 @@ namespace QSSAPI.Controllers
             res.Content.Headers.ContentType = new MediaTypeHeaderValue("application/json");
             return res;
         }
-        private HttpResponseMessage GetMajorGroupByName(string name)
+        public HttpResponseMessage GetMajorGroupByName(string name)
         {
             HttpResponseMessage res = new HttpResponseMessage();
             BLL_StockDepartment obj = new BLL_StockDepartment();

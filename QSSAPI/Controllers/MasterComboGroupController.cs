@@ -38,7 +38,7 @@ namespace QSSAPI.Controllers
         }
 
         [HttpGet]
-        private HttpResponseMessage GetAllMasterComboGroup()
+        public HttpResponseMessage GetAllMasterComboGroup()
         {
             HttpResponseMessage res = new HttpResponseMessage();
             BLL_MasterComboGroup obj = new BLL_MasterComboGroup();
@@ -53,7 +53,7 @@ namespace QSSAPI.Controllers
 
         [HttpGet]
         [Route("~/api/MasterComboGroup/GetMasterComboGroupByCode")]
-        private HttpResponseMessage GetMasterComboGroupByCode(string MasterComboGroupCode)
+        public HttpResponseMessage GetMasterComboGroupByCode(string MasterComboGroupCode)
         {
             HttpResponseMessage res = new HttpResponseMessage();
             BLL_MasterComboGroup obj = new BLL_MasterComboGroup();
@@ -68,7 +68,7 @@ namespace QSSAPI.Controllers
 
         [HttpGet]
         [Route("~/api/MasterComboGroup/GetMasterComboGroupByName")]
-        private HttpResponseMessage GetMasterComboGroupByName(string name)
+        public HttpResponseMessage GetMasterComboGroupByName(string name)
         {
             HttpResponseMessage res = new HttpResponseMessage();
             BLL_MasterComboGroup obj = new BLL_MasterComboGroup();

@@ -38,7 +38,7 @@ namespace QSSAPI.Controllers
         }
 
         [HttpGet]
-        private HttpResponseMessage GetAllCurrency()
+        public HttpResponseMessage GetAllCurrency()
         {
             HttpResponseMessage res = new HttpResponseMessage();
             BLL_Currency obj = new BLL_Currency();
@@ -53,7 +53,7 @@ namespace QSSAPI.Controllers
 
         [HttpGet]
         [Route("~/api/Currency/GetCurrencyByCode")]
-        private HttpResponseMessage GetCurrencyByCode(string CurrencyCode)
+        public HttpResponseMessage GetCurrencyByCode(string CurrencyCode)
         {
             HttpResponseMessage res = new HttpResponseMessage();
             BLL_Currency obj = new BLL_Currency();
@@ -68,7 +68,7 @@ namespace QSSAPI.Controllers
 
         [HttpGet]
         [Route("~/api/Currency/GetCurrencyByName")]
-        private HttpResponseMessage GetCurrencyByName(string name)
+        public HttpResponseMessage GetCurrencyByName(string name)
         {
             HttpResponseMessage res = new HttpResponseMessage();
             BLL_Currency obj = new BLL_Currency();

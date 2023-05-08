@@ -45,8 +45,6 @@ namespace QSSAPI.DAL
             SqlCommand cmd = new SqlCommand();
             cmd.CommandText = "InsertStoreGroup";
             cmd.CommandType = CommandType.StoredProcedure;
-
-            cmd.Parameters.AddWithValue("@brg_ID", bol_StoreGroup.brg_ID);
             cmd.Parameters.AddWithValue("@brg_Description", bol_StoreGroup.brg_Description);
             cmd.Parameters.AddWithValue("@brg_Inactive", bol_StoreGroup.brg_Inactive);
             cmd.Parameters.AddWithValue("@brg_CreateBy", bol_StoreGroup.brg_CreateBy);
@@ -54,7 +52,7 @@ namespace QSSAPI.DAL
             cmd.Parameters.AddWithValue("@brg_UpdateBy", bol_StoreGroup.brg_UpdateBy);
             cmd.Parameters.AddWithValue("@brg_LastUpdate", DateTime.Now);
             cmd.Parameters.AddWithValue("@brg_number", bol_StoreGroup.brg_number);
-            
+            cmd.Parameters.Add("@id", SqlDbType.Int).Direction = ParameterDirection.Output;
             return SqlConjunction.GetSQLTransVoid(cmd);
         }
 

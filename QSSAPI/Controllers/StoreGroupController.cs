@@ -80,8 +80,11 @@ namespace QSSAPI.Controllers
             return res;
         }
 
+       
+        [Route("~/api/StoreGroup/InsertStoreGroup")]
+        [HttpPost]
         // POST api/StoreGroup
-        public HttpResponseMessage Post([FromBody]string value)
+        public HttpResponseMessage Post()
         {
             BLL_StoreGroup obj = new BLL_StoreGroup();
             List<BOL_StoreGroup> objList = new List<BOL_StoreGroup>();

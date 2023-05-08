@@ -41,7 +41,7 @@ namespace QSSAPI.DAL
         public int Insert_Currency(BOL_Currency bol_Currency)
         {
             SqlCommand cmd = new SqlCommand();
-            cmd.CommandText = "Insert_Currency";
+            cmd.CommandText = "InsertCurrency";
             cmd.CommandType = CommandType.StoredProcedure;
 
             cmd.Parameters.AddWithValue("@curr_code", bol_Currency.curr_code);
@@ -52,7 +52,7 @@ namespace QSSAPI.DAL
             cmd.Parameters.AddWithValue("@curr_createdate", DateTime.Now);
             cmd.Parameters.AddWithValue("@curr_updateby", bol_Currency.curr_updateby);
             cmd.Parameters.AddWithValue("@curr_lastupdate", DateTime.Now);
-
+            cmd.Parameters.Add("@id", SqlDbType.Int).Direction = ParameterDirection.Output;
             return SqlConjunction.GetSQLTransVoid(cmd);
         }
     }

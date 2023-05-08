@@ -81,7 +81,11 @@ namespace QSSAPI.Controllers
         }
 
         // POST api/Condiment
-        public HttpResponseMessage Post([FromBody]string value)
+
+    
+        [Route("~/api/Condiment/InsertCondiment")]
+        [HttpPost]
+        public HttpResponseMessage Post()
         {
             BLL_Condiment obj = new BLL_Condiment();
             List<BOL_Condiment> objList = new List<BOL_Condiment>();

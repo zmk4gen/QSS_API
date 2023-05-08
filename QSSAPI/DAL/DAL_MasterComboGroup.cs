@@ -54,7 +54,7 @@ namespace QSSAPI.DAL
             cmd.Parameters.AddWithValue("@cbo_createby", bol_MasterComboGroup.cbo_createby);
             cmd.Parameters.AddWithValue("@cbo_lastupdate", DateTime.Now);
             cmd.Parameters.AddWithValue("@cbo_updateby", bol_MasterComboGroup.cbo_updateby);
-
+            cmd.Parameters.Add("@id", SqlDbType.Int).Direction = ParameterDirection.Output;
             return SqlConjunction.GetSQLTransVoid(cmd);
         }
     }

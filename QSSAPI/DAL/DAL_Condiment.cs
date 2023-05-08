@@ -41,7 +41,7 @@ namespace QSSAPI.DAL
         public int Insert_Condiment(BOL_Condiment bol_Condiment)
         {
             SqlCommand cmd = new SqlCommand();
-            cmd.CommandText = "Insert_Condiment";
+            cmd.CommandText = "InsertCondiment";
             cmd.CommandType = CommandType.StoredProcedure;
 
             cmd.Parameters.AddWithValue("@cond_number", bol_Condiment.cond_number);
@@ -57,7 +57,7 @@ namespace QSSAPI.DAL
             cmd.Parameters.AddWithValue("@cond_createby", bol_Condiment.cond_createby);
             cmd.Parameters.AddWithValue("@cond_lastupdate",DateTime.Now);
             cmd.Parameters.AddWithValue("@cond_updateby", bol_Condiment.cond_updateby);
-
+            cmd.Parameters.Add("@id", SqlDbType.Int).Direction = ParameterDirection.Output;
             return SqlConjunction.GetSQLTransVoid(cmd);
         }
     }

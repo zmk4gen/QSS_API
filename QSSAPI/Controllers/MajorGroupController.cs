@@ -42,7 +42,7 @@ namespace QSSAPI.Controllers
 
         // GET: api/MajorGroup/5
 
-        [Route("~/api/Menu/GetMajorGroup")]
+        [Route("~/api/MajorGroup/GetMajorGroup")]
         [HttpGet]
         public HttpResponseMessage GetMajorGroup()
         {
@@ -57,6 +57,8 @@ namespace QSSAPI.Controllers
             return res;
         }
 
+        [Route("~/api/MajorGroup/GetMajorGroupByCode")]
+        [HttpGet]
         public HttpResponseMessage GetMajorGroupByCode(string code)
         {
             HttpResponseMessage res = new HttpResponseMessage();
@@ -69,6 +71,8 @@ namespace QSSAPI.Controllers
             res.Content.Headers.ContentType = new MediaTypeHeaderValue("application/json");
             return res;
         }
+        [Route("~/api/MajorGroup/GetMajorGroupByName")]
+        [HttpGet]
         public HttpResponseMessage GetMajorGroupByName(string name)
         {
             HttpResponseMessage res = new HttpResponseMessage();
@@ -82,7 +86,9 @@ namespace QSSAPI.Controllers
             return res;
         }
         // POST: api/MajorGroup
-        public HttpResponseMessage Post([FromBody]string value)
+        [Route("~/api/MajorGroup/InsertStockDepartment")]
+        [HttpPost]
+        public HttpResponseMessage Post()
         {
             BLL_StockDepartment obj = new BLL_StockDepartment();
             List<BOL_StockDepartment> objList = new List<BOL_StockDepartment>();

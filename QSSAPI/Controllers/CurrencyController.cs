@@ -81,6 +81,8 @@ namespace QSSAPI.Controllers
         }
 
         // POST api/Currency
+        [HttpPost]
+        [Route("~/api/Currency/InsertCurrency")]
         public HttpResponseMessage Post([FromBody]string value)
         {
             BLL_Currency obj = new BLL_Currency();

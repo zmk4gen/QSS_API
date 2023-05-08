@@ -5,6 +5,9 @@ using System.Text;
 using System.Web;
 using System.Security.Cryptography;
 using System.IO;
+using System.Data;
+using System.Data.SqlClient;
+using DAL;
 namespace QSSAPI.Helpers
 {
     class HelperClass
@@ -177,6 +180,9 @@ namespace QSSAPI.Helpers
             return cipherText;
         }
 
-        #endregion 
+        #endregion
+
+    
+
     }
 }

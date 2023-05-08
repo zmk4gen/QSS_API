@@ -11,6 +11,7 @@ using Newtonsoft.Json;
 using QSSAPI.BLL;
 using DAL;
 using QSSAPI.BOL;
+using QSSAPI.Helpers;
 
 namespace QSSAPI.Controllers
 {
@@ -80,8 +81,9 @@ namespace QSSAPI.Controllers
             return res;
         }
 
-        // POST api/Condiment
-        public HttpResponseMessage Post([FromBody]string value)
+        [HttpPost]
+        [Route("~/api/MasterSlu/InsertMasterSlu")]
+        public HttpResponseMessage Post()
         {
             BLL_mstr_slu obj = new BLL_mstr_slu();
             List<BOL_mstr_slu> objList = new List<BOL_mstr_slu>();
@@ -90,8 +92,10 @@ namespace QSSAPI.Controllers
             string requestFromPost = reader.ReadToEnd();
             objList = JsonConvert.DeserializeObject<List<BOL_mstr_slu>>(requestFromPost);
             string result = "";
+            var branch_id = HelperClass.Get_BranchID();
             foreach (BOL_mstr_slu temp in objList)
             {
+                temp.slu_branchid = branch_id;
                 result += obj.Insert_mstr_slu(temp) + ";";
             }
             return Request.CreateResponse(HttpStatusCode.OK, result);

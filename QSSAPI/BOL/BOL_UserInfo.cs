@@ -68,5 +68,9 @@ namespace QSSAPI.BOL
         public DateTime ui_synOCENTlastupdate { get; set; }
         public int ui_training { get; set; }
         public string ui_uploadPWD { get; set; }
+
+        public string ut_vendor { get; set; }
+
+        public string ut_token { get; set; }
     }
 }

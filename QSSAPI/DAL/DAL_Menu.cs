@@ -35,7 +35,13 @@ namespace QSSAPI.DAL
             cmd.Parameters.AddWithValue("@st_ingredient", true);
             return SqlConjunction.GetSQLDataTable(cmd);
         }
-
+        public DataTable Branch_SelectAll()
+        {
+            SqlCommand cmd = new SqlCommand();
+            cmd.CommandText = "Branch_SelectAll";
+            cmd.CommandType = CommandType.StoredProcedure;
+            return SqlConjunction.GetSQLDataTable(cmd);
+        }
         public DataTable SearchbyMenuItem(string desc)
         {
             SqlCommand cmd = new SqlCommand();
@@ -47,14 +53,7 @@ namespace QSSAPI.DAL
             return SqlConjunction.GetSQLDataTable(cmd);
         }
 
-        public DataTable Branch_SelectAll()
-        {
-            SqlCommand cmd = new SqlCommand();
-            cmd.CommandText = "Branch_SelectAll";
-            cmd.CommandType = CommandType.StoredProcedure;
-            return SqlConjunction.GetSQLDataTable(cmd);
-        }
-
+    
         public int Insert_MenuItem(BOL_stock bol_menu)
         {
             SqlCommand cmd = new SqlCommand();

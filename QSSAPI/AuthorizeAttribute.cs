@@ -12,7 +12,7 @@ using System.Web.Http.Controllers;
 using System.Web.Http.Filters;
 using QSSAPI.Helpers;
 
-namespace API
+namespace QSSAPI
 {
     [AttributeUsageAttribute(AttributeTargets.Class | AttributeTargets.Method,Inherited = true, AllowMultiple = true)]
     public class AuthorizeAttribute : AuthorizationFilterAttribute

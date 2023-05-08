@@ -62,7 +62,7 @@ namespace QSSAPI.DAL
        public int Insert_StockType(BOL_StockType bol_stockType)
         {
             SqlCommand cmd = new SqlCommand();
-            cmd.CommandText = "Insert_Stock_Type";
+            cmd.CommandText = "Insert_Stock_Type_API";
             cmd.CommandType = CommandType.StoredProcedure;
 
             cmd.Parameters.AddWithValue("@stype_Code", bol_stockType.stype_Code);
@@ -73,7 +73,7 @@ namespace QSSAPI.DAL
             cmd.Parameters.AddWithValue("@stype_createby", bol_stockType.stype_createby);
             cmd.Parameters.AddWithValue("@stype_createdate", DateTime.Now);
             cmd.Parameters.AddWithValue("@stype_LastUpdate", DateTime.Now);
-
+            cmd.Parameters.Add("@id", SqlDbType.Int).Direction = ParameterDirection.Output;
             return SqlConjunction.GetSQLTransVoid(cmd);
         }
     }

@@ -56,7 +56,7 @@ namespace QSSAPI.DAL
             cmd.Parameters.AddWithValue("@slu_createby", bol_mstr_slu.slu_createby);
             cmd.Parameters.AddWithValue("@slu_lastupdate", DateTime.Now);
             cmd.Parameters.AddWithValue("@slu_updateby", bol_mstr_slu.slu_updateby);
-         
+            cmd.Parameters.Add("@id", SqlDbType.Int).Direction = ParameterDirection.Output;
             return SqlConjunction.GetSQLTransVoid(cmd);
         }
     }

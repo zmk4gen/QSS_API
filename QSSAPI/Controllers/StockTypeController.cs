@@ -82,8 +82,10 @@ namespace QSSAPI.Controllers
             return res;
         }
 
+        [HttpPost]
+        [Route("~/api/StockType/InsertStocktype")]
         // POST api/StockType
-        public HttpResponseMessage Post([FromBody]string value)
+        public HttpResponseMessage Post()
         {
             BLL_StockType obj = new BLL_StockType();
             List<BOL_StockType> objList = new List<BOL_StockType>();

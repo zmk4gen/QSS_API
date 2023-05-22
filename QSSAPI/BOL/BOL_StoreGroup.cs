@@ -9,7 +9,7 @@ namespace QSSAPI.BOL
     {
         public int brg_ID { get; set; }
         public string brg_Description { get; set; }
-        public int brg_Inactive { get; set; }
+        public bool brg_Inactive { get; set; }
         public string brg_CreateBy { get; set; }
         public DateTime brg_CreateDate { get; set; }
         public string brg_UpdateBy { get; set; }

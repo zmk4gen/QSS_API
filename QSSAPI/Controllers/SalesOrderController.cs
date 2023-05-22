@@ -13,6 +13,8 @@ using QSSAPI.Helpers;
 using QSSAPI.BOL;
 using QSSAPI.BLL;
 
+using System.Configuration;
+
 namespace QSSAPI.Controllers
 {
     public class SalesOrderController : ApiController
@@ -35,6 +37,8 @@ namespace QSSAPI.Controllers
         }
 
         // POST: api/SalesOrder
+        [Route("~/api/SalesOrder/Order")]
+        [HttpPost]
         public HttpResponseMessage Post(string remoteId, string order, string branch, string rvc, string deliverychannel, string salestype)
         {
             HttpResponseMessage res = new HttpResponseMessage();
@@ -54,7 +58,7 @@ namespace QSSAPI.Controllers
 
                 HelperClass.WriteLog("remoteID:" + remoteId + "::branch:" + branch);
 
-                //HelperClass.DB_Conn = ConfigurationManager.AppSettings["SQLConn_POS"].ToString();
+                HelperClass.DB_Conn = ConfigurationManager.AppSettings["SQLConn"].ToString();
                 gl_Generic = new Generic();
 
                 Retrieve_RVCInfo();
@@ -89,7 +93,7 @@ namespace QSSAPI.Controllers
                     gl_Generic.gl_str_uid = getUIDNo();
                     gl_Generic.gl_str_checkno = order; //inserting order number from DeliveryHero as check no //getCheckno(gl_Generic.gl_int_RVC_ID.ToString());
 
-                    //HelperClass.DB_Conn = ConfigurationManager.AppSettings["SQLConn_OrderDB"].ToString();
+                    HelperClass.DB_Conn = ConfigurationManager.AppSettings["SQLConn_OrderDB"].ToString();
 
                     //message = bll_order_raw.Insert_Order_Raw_Data(obj_bol);
                     BOL_Order_Raw_Data obj_bol = new BOL_Order_Raw_Data();
@@ -105,13 +109,13 @@ namespace QSSAPI.Controllers
 
                     message = bll_order_raw.Insert_Order_Raw_Data(obj_bol, out lc_int_order_raw_data_id);
 
-                    //HelperClass.DB_Conn = ConfigurationManager.AppSettings["SQLConn_POS"].ToString();
+                    HelperClass.DB_Conn = ConfigurationManager.AppSettings["SQLConn"].ToString();
 
                     BOL_Order_Object bol_order = JsonConvert.DeserializeObject<BOL_Order_Object>(str_raw_data);
                     TranslateToPOSDB(bol_order); //do transaction insert here
 
 
-                    //HelperClass.DB_Conn = ConfigurationManager.AppSettings["SQLConn_OrderDB"].ToString();
+                    HelperClass.DB_Conn = ConfigurationManager.AppSettings["SQLConn_OrderDB"].ToString();
 
                     BOL_Order_Notification bol_order_noti = new BOL_Order_Notification();
                     bol_order_noti.ordernoti_OrderRawDataID = lc_int_order_raw_data_id.ToString();
@@ -192,7 +196,7 @@ namespace QSSAPI.Controllers
             List<Product> main_product = new List<Product>();
             main_product = bol_order.products;
 
-            //HelperClass.DB_Conn = ConfigurationManager.AppSettings["SQLConn_POS"].ToString();
+            HelperClass.DB_Conn = ConfigurationManager.AppSettings["SQLConn"].ToString();
 
             int lc_int_packageparentid = 0;
             int result = 0;

@@ -57,12 +57,6 @@ namespace QSSAPI.BLL
             {
                 SqlConjunction.StartTransaction();
 
-                DAL_StockType dalmenuitem = new DAL_StockType();
-                effectID = dalmenuitem.Insert_StockType(bolstocktype);
-
-                SqlConjunction.CommitTransaction();
-
-
                 DAL_StockType dalstocktype = new DAL_StockType();
                 effectID = dalstocktype.Insert_StockType(bolstocktype);
 

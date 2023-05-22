@@ -1,4 +1,4 @@
-﻿using API.Models;
+﻿using QSSAPI.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -10,8 +10,9 @@ using System.Threading;
 using System.Web;
 using System.Web.Http.Controllers;
 using System.Web.Http.Filters;
+using QSSAPI.Helpers;
 
-namespace API
+namespace QSSAPI
 {
     [AttributeUsageAttribute(AttributeTargets.Class | AttributeTargets.Method,Inherited = true, AllowMultiple = true)]
     public class AuthorizeAttribute : AuthorizationFilterAttribute
@@ -29,7 +30,7 @@ namespace API
                 string[] usernamePasswordArray = decodedAuthenticationToken.Split(':');//expect the username and password be seperated by ':' 
                 string username = usernamePasswordArray[0];
                 string password = usernamePasswordArray[1];
-                password = Helper.Encrypt(password);
+                password = HelperClass.Encrypt(password);
                 if (User.Login(username, password))
                 {
                     Thread.CurrentPrincipal = new GenericPrincipal(new GenericIdentity(username), null);

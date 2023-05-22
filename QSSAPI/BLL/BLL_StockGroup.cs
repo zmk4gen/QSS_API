@@ -45,12 +45,6 @@ namespace QSSAPI.BLL
                 SqlConjunction.StartTransaction();
 
 
-                DAL_StockGroup dalmenuitem = new DAL_StockGroup();
-                effectID = dalmenuitem.Insert_StockGroup(bolstockgroup);
-
-                SqlConjunction.CommitTransaction();
-
-
                 DAL_StockGroup dalstockgroup = new DAL_StockGroup();
                 effectID = dalstockgroup.Insert_StockGroup(bolstockgroup);
 

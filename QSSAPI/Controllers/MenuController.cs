@@ -18,7 +18,7 @@ using QSSAPI.BOL;
 namespace QSSAPI.Controllers
 {
     [RoutePrefix("api")]
-    
+    [Authorize]
     public class MenuController : ApiController
     {
         // GET: api/Menu

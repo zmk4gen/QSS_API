@@ -16,18 +16,18 @@ namespace QSSAPI.BLL
         /// <returns></returns>
         public DataTable BindMajorGroup()
         {
-            DAL_StocckDepartment dalmenuitem = new DAL_StocckDepartment();
+            DAL_StockDepartment dalmenuitem = new DAL_StockDepartment();
             return dalmenuitem.BindMajorGroup();
         }
 
         public DataTable BindMajorGroupByCode(string code)
         {
-            DAL_StocckDepartment dalmenuitem = new DAL_StocckDepartment();
+            DAL_StockDepartment dalmenuitem = new DAL_StockDepartment();
             return dalmenuitem.BindMajorGroupByCode(code);
         }
         public DataTable BindMajorGroupByName(string name)
         {
-            DAL_StocckDepartment dalmenuitem = new DAL_StocckDepartment();
+            DAL_StockDepartment dalmenuitem = new DAL_StockDepartment();
             return dalmenuitem.BindMajorGroupByName(name);
         }
 
@@ -38,7 +38,7 @@ namespace QSSAPI.BLL
             {
                 SqlConjunction.StartTransaction();
 
-                DAL_StocckDepartment dalmenuitem = new DAL_StocckDepartment();
+                DAL_StockDepartment dalmenuitem = new DAL_StockDepartment();
                 effectID = dalmenuitem.Insert_MajorGroup(bolmenuitem);
 
                 SqlConjunction.CommitTransaction();

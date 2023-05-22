@@ -65,14 +65,15 @@ namespace QSSAPI.DAL
             cmd.CommandText = "Insert_Stock_Group_API";
             cmd.CommandType = CommandType.StoredProcedure;
 
-            cmd.Parameters.AddWithValue("@stype_Code", bol_stockGroup.sg_Code);
-            cmd.Parameters.AddWithValue("@stype_Name", bol_stockGroup.sg_Name);
-            cmd.Parameters.AddWithValue("@stype_Accno", bol_stockGroup.sg_Accno);
-            cmd.Parameters.AddWithValue("@stype_Inactive", bol_stockGroup.sg_Inactive);
-            cmd.Parameters.AddWithValue("@stype_LastUpdate", bol_stockGroup.sg_LastUpdate);
-            cmd.Parameters.AddWithValue("@stype_UpdateBy", bol_stockGroup.sg_UpdateBy);
-            cmd.Parameters.AddWithValue("@stype_createdate", bol_stockGroup.sg_createdate);
-            cmd.Parameters.AddWithValue("@stype_createby", bol_stockGroup.sg_createby);
+            cmd.Parameters.AddWithValue("@sg_Code", bol_stockGroup.sg_Code);
+            cmd.Parameters.AddWithValue("@sg_Name", bol_stockGroup.sg_Name);
+            cmd.Parameters.AddWithValue("@sg_Accno", bol_stockGroup.sg_Accno);
+            cmd.Parameters.AddWithValue("@sg_Inactive", bol_stockGroup.sg_Inactive);
+            cmd.Parameters.AddWithValue("@sg_LastUpdate", DateTime.Now);
+            cmd.Parameters.AddWithValue("@sg_UpdateBy", bol_stockGroup.sg_UpdateBy);
+            cmd.Parameters.AddWithValue("@sg_createdate", DateTime.Now);
+            cmd.Parameters.AddWithValue("@sg_createby", bol_stockGroup.sg_createby);
+            cmd.Parameters.Add("@id", SqlDbType.Int).Direction = ParameterDirection.Output;
             return SqlConjunction.GetSQLTransVoid(cmd);
         }
 

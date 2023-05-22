@@ -11,7 +11,7 @@ using Newtonsoft.Json;
 using QSSAPI.BLL;
 using DAL;
 using QSSAPI.BOL;
-
+using QSSAPI.Helpers;
 namespace QSSAPI.Controllers
 {
     [RoutePrefix("api")]
@@ -81,7 +81,9 @@ namespace QSSAPI.Controllers
         }
 
         // POST api/MasterComboGroup
-        public HttpResponseMessage Post([FromBody]string value)
+        [HttpPost]
+        [Route("~/api/MasterComboGroup/InsertMasterComboGroup")]
+        public HttpResponseMessage Post()
         {
             BLL_MasterComboGroup obj = new BLL_MasterComboGroup();
             List<BOL_Master_Combogroup> objList = new List<BOL_Master_Combogroup>();
@@ -90,8 +92,12 @@ namespace QSSAPI.Controllers
             string requestFromPost = reader.ReadToEnd();
             objList = JsonConvert.DeserializeObject<List<BOL_Master_Combogroup>>(requestFromPost);
             string result = "";
+            
+            var branch_id = HelperClass.Get_BranchID();
+             
             foreach (BOL_Master_Combogroup temp in objList)
             {
+                temp.cbo_branchid = branch_id;
                 result += obj.InserMasterComboGroup(temp) + ";";
             }
             return Request.CreateResponse(HttpStatusCode.OK, result);

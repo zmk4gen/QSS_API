@@ -81,7 +81,9 @@ namespace QSSAPI.Controllers
         }
 
         // POST api/StockGroup
-        public HttpResponseMessage Post([FromBody]string value)
+        [HttpPost]
+        [Route("~/api/StockGroup/InsertStockGroup")]
+        public HttpResponseMessage Post()
         {
             BLL_StockGroup obj = new BLL_StockGroup();
             List<BOL_StockGroup> objList = new List<BOL_StockGroup>();

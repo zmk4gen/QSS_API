@@ -173,6 +173,7 @@
     <Compile Include="Areas\HelpPage\SampleGeneration\SampleDirection.cs" />
     <Compile Include="Areas\HelpPage\SampleGeneration\TextSample.cs" />
     <Compile Include="Areas\HelpPage\XmlDocumentationProvider.cs" />
+    <Compile Include="AuthorizeAttribute.cs" />
     <Compile Include="BLL\BLL_ClockoutReason.cs" />
     <Compile Include="BLL\BLL_Dashboard.cs" />
     <Compile Include="BLL\BLL_Delivery_Info.cs" />
@@ -240,15 +241,14 @@
     <Compile Include="Controllers\ClockoutReasonController.cs" />
     <Compile Include="Controllers\CondimentController.cs" />
     <Compile Include="Controllers\CurrencyController.cs" />
-    <Compile Include="Controllers\FamilyGroupController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\LocationController.cs" />
+    <Compile Include="Controllers\LoginController.cs" />
     <Compile Include="Controllers\MajorGroupController.cs" />
     <Compile Include="Controllers\MasterComboGroupController.cs" />
     <Compile Include="Controllers\MenuController.cs" />
     <Compile Include="Controllers\mstr_sluController.cs" />
-    <Compile Include="Controllers\ReportGroupController.cs" />
-    <Compile Include="Controllers\SalesEnquiryDashboardController.cs" />
+    <Compile Include="Controllers\DashboardController.cs" />
     <Compile Include="Controllers\SalesOrderController.cs" />
     <Compile Include="Controllers\StockPriceController.cs" />
     <Compile Include="Controllers\StocksQty_Controller.cs" />
@@ -271,7 +271,7 @@
     <Compile Include="DAL\DAL_Sales.cs" />
     <Compile Include="DAL\DAL_SalesDetails_Discount.cs" />
     <Compile Include="DAL\DAL_Sales_Details.cs" />
-    <Compile Include="DAL\DAL_StocckDepartment.cs" />
+    <Compile Include="DAL\DAL_StockDepartment.cs" />
     <Compile Include="DAL\DAL_StockGroup.cs" />
     <Compile Include="Controllers\StockGroupController.cs" />
     <Compile Include="Controllers\StockTypeController.cs" />
@@ -298,6 +298,7 @@
     </Compile>
     <Compile Include="Helpers\Generic.cs" />
     <Compile Include="Helpers\HelperClass.cs" />
+    <Compile Include="Models\User.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -357,7 +358,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Models\" />
     <Folder Include="Views\Condiment\" />
     <Folder Include="Views\Currency\" />
     <Folder Include="Views\MasterComboGroup\" />

@@ -10,7 +10,7 @@ namespace QSSAPI.DAL
 
 
 {
-    public class DAL_StocckDepartment
+    public class DAL_StockDepartment
     {
         /// <summary>
         /// Majog Group
@@ -50,10 +50,11 @@ namespace QSSAPI.DAL
             cmd.Parameters.AddWithValue("@sd_Name", bol_stockdept.sd_Name);
             cmd.Parameters.AddWithValue("@sd_Accno", bol_stockdept.sd_Accno);
             cmd.Parameters.AddWithValue("@sd_Inactive", bol_stockdept.sd_Inactive);
-            cmd.Parameters.AddWithValue("@sd_LastUpdate", bol_stockdept.sd_LastUpdate);
+            cmd.Parameters.AddWithValue("@sd_LastUpdate", DateTime.Now);
             cmd.Parameters.AddWithValue("@sd_UpdateBy", bol_stockdept.sd_UpdateBy);
-            cmd.Parameters.AddWithValue("@sd_createdate", bol_stockdept.sd_createdate);
+            cmd.Parameters.AddWithValue("@sd_createdate", DateTime.Now);
             cmd.Parameters.AddWithValue("@sd_createby", bol_stockdept.sd_createby);
+            cmd.Parameters.Add("@id", SqlDbType.Int).Direction = ParameterDirection.Output;
             return SqlConjunction.GetSQLTransVoid(cmd);
         }
     }

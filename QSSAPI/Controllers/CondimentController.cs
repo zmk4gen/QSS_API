@@ -53,11 +53,11 @@ namespace QSSAPI.Controllers
 
         [HttpGet]
         [Route("~/api/Condiment/GetCondimentByCode")]
-        public HttpResponseMessage GetCondimentByCode(string condimentCode)
+        public HttpResponseMessage GetCondimentByCode(string code)
         {
             HttpResponseMessage res = new HttpResponseMessage();
             BLL_Condiment obj = new BLL_Condiment();
-            DataTable objList = obj.BindCondimentByCode(condimentCode);
+            DataTable objList = obj.BindCondimentByCode(code);
             objList.TableName = "Condiment";
 
             res = Request.CreateResponse(HttpStatusCode.OK, objList);
@@ -98,8 +98,18 @@ namespace QSSAPI.Controllers
         }
 
         // PUT api/<controller>/5
-        public void Put(int id, [FromBody]string value)
+        public HttpResponseMessage Put(int id, [FromBody]string value)
         {
+            BLL_Condiment obj = new BLL_Condiment();
+            BOL_Condiment objCondiment = new BOL_Condiment();
+            StreamReader reader = new StreamReader(HttpContext.Current.Request.InputStream);
+            reader.BaseStream.Position = 0;
+            string requestFromPut = reader.ReadToEnd();
+            objCondiment = JsonConvert.DeserializeObject<BOL_Condiment>(requestFromPut);
+            string result = "";
+            result = obj.UpdateCondiment(objCondiment) + ";";
+
+            return Request.CreateResponse(HttpStatusCode.OK, result);
         }
 
         // DELETE api/<controller>/5

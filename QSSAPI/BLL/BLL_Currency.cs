@@ -49,5 +49,25 @@ namespace QSSAPI.BLL
             }
             return effectID;
         }
+
+        public int UpdateCurrency(BOL_Currency bolCurrency)
+        {
+            int effectID = 0;
+            try
+            {
+                SqlConjunction.StartTransaction();
+
+                DAL_Currency dalCurrency = new DAL_Currency();
+                effectID = dalCurrency.Update_Currency(bolCurrency);
+
+                SqlConjunction.CommitTransaction();
+            }
+            catch (Exception ex)
+            {
+                SqlConjunction.RollbackTransaction(ex.Message);
+
+            }
+            return effectID;
+        }
     }
 }

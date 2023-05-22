@@ -65,5 +65,28 @@ namespace QSSAPI.BLL
             return effectID;
         }
 
+        public int UpdateStockGroup(BOL_StockGroup bolstockgroup)
+
+        {
+            int effectID = 0;
+            try
+            {
+                SqlConjunction.StartTransaction();
+
+
+                DAL_StockGroup dalStockGroup = new DAL_StockGroup();
+                effectID = dalStockGroup.Update_StockGroup(bolstockgroup);
+
+                SqlConjunction.CommitTransaction();
+
+            }
+            catch (Exception ex)
+            {
+                SqlConjunction.RollbackTransaction(ex.Message);
+
+            }
+            return effectID;
+        }
+
     }
 }

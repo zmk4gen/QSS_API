@@ -38,7 +38,7 @@ namespace QSSAPI.Controllers
         }
 
         [HttpGet]
-        private HttpResponseMessage GetAllStoreGroup()
+        public HttpResponseMessage GetAllStoreGroup()
         {
             HttpResponseMessage res = new HttpResponseMessage();
             BLL_StoreGroup obj = new BLL_StoreGroup();
@@ -53,11 +53,11 @@ namespace QSSAPI.Controllers
 
         [HttpGet]
         [Route("~/api/StoreGroup/GetStoreGroupByCode")]
-        private HttpResponseMessage GetStoreGroupByCode(string StoreGroupCode)
+        public HttpResponseMessage GetStoreGroupByCode(string code)
         {
             HttpResponseMessage res = new HttpResponseMessage();
             BLL_StoreGroup obj = new BLL_StoreGroup();
-            DataTable objList = obj.BindStoreGroupByCode(StoreGroupCode);
+            DataTable objList = obj.BindStoreGroupByCode(code);
             objList.TableName = "StoreGroup";
 
             res = Request.CreateResponse(HttpStatusCode.OK, objList);
@@ -68,7 +68,7 @@ namespace QSSAPI.Controllers
 
         [HttpGet]
         [Route("~/api/StoreGroup/GetStoreGroupByName")]
-        private HttpResponseMessage GetStoreGroupByName(string name)
+        public HttpResponseMessage GetStoreGroupByName(string name)
         {
             HttpResponseMessage res = new HttpResponseMessage();
             BLL_StoreGroup obj = new BLL_StoreGroup();

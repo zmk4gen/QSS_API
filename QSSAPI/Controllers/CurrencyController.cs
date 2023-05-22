@@ -53,11 +53,11 @@ namespace QSSAPI.Controllers
 
         [HttpGet]
         [Route("~/api/Currency/GetCurrencyByCode")]
-        public HttpResponseMessage GetCurrencyByCode(string CurrencyCode)
+        public HttpResponseMessage GetCurrencyByCode(string code)
         {
             HttpResponseMessage res = new HttpResponseMessage();
             BLL_Currency obj = new BLL_Currency();
-            DataTable objList = obj.BindCurrencyByCode(CurrencyCode);
+            DataTable objList = obj.BindCurrencyByCode(code);
             objList.TableName = "Currency";
 
             res = Request.CreateResponse(HttpStatusCode.OK, objList);
@@ -97,9 +97,19 @@ namespace QSSAPI.Controllers
             return Request.CreateResponse(HttpStatusCode.OK, result);
         }
 
-        // PUT api/<controller>/5
-        public void Put(int id, [FromBody]string value)
+        // PUT api/Currency
+        public HttpResponseMessage Put(int id, [FromBody]string value)
         {
+            BLL_Currency obj = new BLL_Currency();
+            BOL_Currency objCurrency = new BOL_Currency();
+            StreamReader reader = new StreamReader(HttpContext.Current.Request.InputStream);
+            reader.BaseStream.Position = 0;
+            string requestFromPut = reader.ReadToEnd();
+            objCurrency = JsonConvert.DeserializeObject<BOL_Currency>(requestFromPut);
+            string result = "";
+            result = obj.UpdateCurrency(objCurrency) + ";";
+
+            return Request.CreateResponse(HttpStatusCode.OK, result);
         }
 
         // DELETE api/<controller>/5

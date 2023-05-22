@@ -257,7 +257,6 @@
     <Compile Include="Controllers\StoreGroupController.cs" />
     <Compile Include="Controllers\StoreSubGroup_Controller.cs" />
     <Compile Include="Controllers\TaxItem.cs" />
-    <Compile Include="BLL\BLL_StoreSubGroup.cs" />
     <Compile Include="Controllers\UserDepartmentController.cs" />
     <Compile Include="Controllers\UserInfoController.cs" />
     <Compile Include="Controllers\UserProfileController.cs" />

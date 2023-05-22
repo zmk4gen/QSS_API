@@ -53,11 +53,11 @@ namespace QSSAPI.Controllers
 
         [HttpGet]
         [Route("~/api/Location/GetLocationByCode")]
-        public HttpResponseMessage GetLocationByCode(string LocationCode)
+        public HttpResponseMessage GetLocationByCode(string code)
         {
             HttpResponseMessage res = new HttpResponseMessage();
             BLL_Location obj = new BLL_Location();
-            DataTable objList = obj.BindLocationByCode(LocationCode);
+            DataTable objList = obj.BindLocationByCode(code);
             objList.TableName = "Location";
 
             res = Request.CreateResponse(HttpStatusCode.OK, objList);

@@ -38,7 +38,7 @@ namespace QSSAPI.Controllers
         }
 
         [HttpGet]
-        private HttpResponseMessage GetAllmstr_slu()
+        public HttpResponseMessage GetAllmstr_slu()
         {
             HttpResponseMessage res = new HttpResponseMessage();
             BLL_mstr_slu obj = new BLL_mstr_slu();
@@ -53,11 +53,11 @@ namespace QSSAPI.Controllers
 
         [HttpGet]
         [Route("~/api/MasterSlu/GetMasterSluByCode")]
-        private HttpResponseMessage GetMasterSluByCode(string sluCode)
+        public HttpResponseMessage GetMasterSluByCode(string code)
         {
             HttpResponseMessage res = new HttpResponseMessage();
             BLL_mstr_slu obj = new BLL_mstr_slu();
-            DataTable objList = obj.Bind_mstr_sluByCode(sluCode);
+            DataTable objList = obj.Bind_mstr_sluByCode(code);
             objList.TableName = "mstr_slu";
 
             res = Request.CreateResponse(HttpStatusCode.OK, objList);
@@ -68,7 +68,7 @@ namespace QSSAPI.Controllers
 
         [HttpGet]
         [Route("~/api/MasterSlu/GetMasterSluByName")]
-        private HttpResponseMessage GetMasterSluByName(string name)
+        public HttpResponseMessage GetMasterSluByName(string name)
         {
             HttpResponseMessage res = new HttpResponseMessage();
             BLL_mstr_slu obj = new BLL_mstr_slu ();
@@ -98,8 +98,18 @@ namespace QSSAPI.Controllers
         }
 
         // PUT api/<controller>/5
-        public void Put(int id, [FromBody]string value)
+        public HttpResponseMessage Put(int id, [FromBody]string value)
         {
+            BLL_mstr_slu obj = new BLL_mstr_slu();
+            BOL_mstr_slu objmstr_slu = new BOL_mstr_slu();
+            StreamReader reader = new StreamReader(HttpContext.Current.Request.InputStream);
+            reader.BaseStream.Position = 0;
+            string requestFromPut = reader.ReadToEnd();
+            objmstr_slu = JsonConvert.DeserializeObject<BOL_mstr_slu>(requestFromPut);
+            string result = "";
+            result = obj.Update_mstr_slu(objmstr_slu) + ";";
+
+            return Request.CreateResponse(HttpStatusCode.OK, result);
         }
 
         // DELETE api/<controller>/5

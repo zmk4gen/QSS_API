@@ -48,5 +48,24 @@ namespace QSSAPI.BLL
             }
             return effectID;
         }
+        public int UpdateCondiment(BOL_Condiment bolCondiment)
+        {
+            int effectID = 0;
+            try
+            {
+                SqlConjunction.StartTransaction();
+
+                DAL_Condiment dalCondiment = new DAL_Condiment();
+                effectID = dalCondiment.Update_Condiment(bolCondiment);
+
+                SqlConjunction.CommitTransaction();
+            }
+            catch (Exception ex)
+            {
+                SqlConjunction.RollbackTransaction(ex.Message);
+
+            }
+            return effectID;
+        }
     }
 }

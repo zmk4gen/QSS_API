@@ -7,6 +7,7 @@ namespace QSSAPI.BOL
 {
     public class BOL_Master_Combogroup
     {
+        public int cbo_id { get; set; }
         public int cbo_number { get; set; }
 	    public string cbo_name { get; set; }
         public int cbo_style { get; set; }

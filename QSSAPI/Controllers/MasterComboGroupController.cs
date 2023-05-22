@@ -53,11 +53,11 @@ namespace QSSAPI.Controllers
 
         [HttpGet]
         [Route("~/api/MasterComboGroup/GetMasterComboGroupByCode")]
-        public HttpResponseMessage GetMasterComboGroupByCode(string MasterComboGroupCode)
+        public HttpResponseMessage GetMasterComboGroupByCode(string code)
         {
             HttpResponseMessage res = new HttpResponseMessage();
             BLL_MasterComboGroup obj = new BLL_MasterComboGroup();
-            DataTable objList = obj.BindMasterComboGroupByCode(MasterComboGroupCode);
+            DataTable objList = obj.BindMasterComboGroupByCode(code);
             objList.TableName = "mstr_combogroup";
 
             res = Request.CreateResponse(HttpStatusCode.OK, objList);
@@ -98,8 +98,18 @@ namespace QSSAPI.Controllers
         }
 
         // PUT api/<controller>/5
-        public void Put(int id, [FromBody]string value)
+        public HttpResponseMessage Put(int id, [FromBody]string value)
         {
+            BLL_MasterComboGroup obj = new BLL_MasterComboGroup();
+            BOL_Master_Combogroup objMaster_Combogroup = new BOL_Master_Combogroup();
+            StreamReader reader = new StreamReader(HttpContext.Current.Request.InputStream);
+            reader.BaseStream.Position = 0;
+            string requestFromPut = reader.ReadToEnd();
+            objMaster_Combogroup = JsonConvert.DeserializeObject<BOL_Master_Combogroup>(requestFromPut);
+            string result = "";
+            result = obj.UpdateMasterComboGroup(objMaster_Combogroup) + ";";
+
+            return Request.CreateResponse(HttpStatusCode.OK, result);
         }
 
         // DELETE api/<controller>/5

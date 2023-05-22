@@ -53,11 +53,11 @@ namespace QSSAPI.Controllers
 
         [HttpGet]
         [Route("~/api/ClockoutReason/GetClockoutReasonByCode")]
-        public HttpResponseMessage GetClockoutReasonByCode(string ClockoutReasonCode)
+        public HttpResponseMessage GetClockoutReasonByCode(string code)
         {
             HttpResponseMessage res = new HttpResponseMessage();
             BLL_ClockoutReason obj = new BLL_ClockoutReason();
-            DataTable objList = obj.BindClockoutReasonByCode(ClockoutReasonCode);
+            DataTable objList = obj.BindClockoutReasonByCode(code);
             objList.TableName = "ClockoutReason";
 
             res = Request.CreateResponse(HttpStatusCode.OK, objList);

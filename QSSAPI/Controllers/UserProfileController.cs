@@ -53,11 +53,11 @@ namespace QSSAPI.Controllers
 
         [HttpGet]
         [Route("~/api/UserProfile/GetUserProfileByCode")]
-        public HttpResponseMessage GetUserProfileByCode(string UserProfileCode)
+        public HttpResponseMessage GetUserProfileByCode(string code)
         {
             HttpResponseMessage res = new HttpResponseMessage();
             BLL_UserProfile obj = new BLL_UserProfile();
-            DataTable objList = obj.BindUserProfileByCode(UserProfileCode);
+            DataTable objList = obj.BindUserProfileByCode(code);
             objList.TableName = "UserProfile";
 
             res = Request.CreateResponse(HttpStatusCode.OK, objList);

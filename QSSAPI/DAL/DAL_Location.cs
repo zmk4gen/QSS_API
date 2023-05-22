@@ -25,7 +25,7 @@ namespace QSSAPI.DAL
             cmd.CommandText = "BindLocation_API";
             cmd.CommandType = CommandType.StoredProcedure;
             cmd.Parameters.AddWithValue("@loc_code", number);
-
+            cmd.Parameters.AddWithValue("@status", "true");
             return SqlConjunction.GetSQLDataTable(cmd);
         }
 
@@ -34,7 +34,8 @@ namespace QSSAPI.DAL
             SqlCommand cmd = new SqlCommand();
             cmd.CommandText = "BindLocation_API";
             cmd.CommandType = CommandType.StoredProcedure;
-            cmd.Parameters.AddWithValue("@name", name);
+            cmd.Parameters.AddWithValue("@loc_Name", name);
+            cmd.Parameters.AddWithValue("@status", "false");
             return SqlConjunction.GetSQLDataTable(cmd);
         }
 

@@ -19,10 +19,10 @@ namespace QSSAPI.Controllers
     {
         [HttpGet]
         [Route("~/api/UserInfo/Get")]
-        public HttpResponseMessage Get(string cond_code = null, string name = null)
+        public HttpResponseMessage Get(string user_code = null, string name = null)
         {
             HttpResponseMessage res = new HttpResponseMessage();
-            if ((cond_code == "" || cond_code == null) && (name == "" || name == null))
+            if ((user_code == "" || user_code == null) && (name == "" || name == null))
             {
                 res = GetAllUserInfo();
             }
@@ -32,7 +32,7 @@ namespace QSSAPI.Controllers
             }
             else
             {
-                res = GetUserInfoByCode(cond_code);
+                res = GetUserInfoByCode(user_code);
             }
             return res;
         }
@@ -53,11 +53,11 @@ namespace QSSAPI.Controllers
 
         [HttpGet]
         [Route("~/api/UserInfo/GetUserInfoByCode")]
-        public HttpResponseMessage GetUserInfoByCode(string UserInfoCode)
+        public HttpResponseMessage GetUserInfoByCode(string code)
         {
             HttpResponseMessage res = new HttpResponseMessage();
             BLL_UserInfo obj = new BLL_UserInfo();
-            DataTable objList = obj.BindUserInfoByCode(UserInfoCode);
+            DataTable objList = obj.BindUserInfoByCode(code);
             objList.TableName = "UserInfo";
 
             res = Request.CreateResponse(HttpStatusCode.OK, objList);

@@ -24,8 +24,8 @@ namespace QSSAPI.DAL
             SqlCommand cmd = new SqlCommand();
             cmd.CommandText = "BindUserInfo_API";
             cmd.CommandType = CommandType.StoredProcedure;
-            cmd.Parameters.AddWithValue("@ui_code", number);
-
+            cmd.Parameters.AddWithValue("@ui_id", number);
+            cmd.Parameters.AddWithValue("@status", "true");
             return SqlConjunction.GetSQLDataTable(cmd);
         }
 
@@ -35,6 +35,7 @@ namespace QSSAPI.DAL
             cmd.CommandText = "BindUserInfo_API";
             cmd.CommandType = CommandType.StoredProcedure;
             cmd.Parameters.AddWithValue("@ui_name", name);
+            cmd.Parameters.AddWithValue("@status", "false");
             return SqlConjunction.GetSQLDataTable(cmd);
         }
 

@@ -21,10 +21,10 @@ namespace QSSAPI.Controllers
         // GET api/StockType/Get
         [HttpGet]
         [Route("~/api/StockType/Get")]
-        public HttpResponseMessage Get(string stockTypeCode = null, string name=null)
+        public HttpResponseMessage Get(string code = null, string name=null)
         {
             HttpResponseMessage res = new HttpResponseMessage();
-            if ((stockTypeCode == "" || stockTypeCode == null) && (name == "" || name == null))
+            if ((code == "" || code == null) && (name == "" || name == null))
             {
                 res = GetAllStockType();
             }
@@ -34,13 +34,13 @@ namespace QSSAPI.Controllers
             }
             else
             {
-                res = GetStockTypeByStockCode(stockTypeCode);
+                res = GetStockTypeByStockCode(code);
             }
             return res;
         }
 
         [HttpGet]
-        private HttpResponseMessage GetAllStockType()
+        public HttpResponseMessage GetAllStockType()
         {
             HttpResponseMessage res = new HttpResponseMessage();
             BLL_StockType obj = new BLL_StockType();
@@ -55,11 +55,11 @@ namespace QSSAPI.Controllers
 
         [HttpGet]
         [Route("~/api/StockType/GetStockTypeByStockCode")]
-        private HttpResponseMessage GetStockTypeByStockCode(string stockTypeCode)
+        public HttpResponseMessage GetStockTypeByStockCode(string code)
         {
             HttpResponseMessage res = new HttpResponseMessage();
             BLL_StockType obj = new BLL_StockType();
-            DataTable objList = obj.BindStockTypeByCode(stockTypeCode);
+            DataTable objList = obj.BindStockTypeByCode(code);
             objList.TableName = "Stock_Type";
 
             res = Request.CreateResponse(HttpStatusCode.OK, objList);
@@ -70,7 +70,7 @@ namespace QSSAPI.Controllers
 
         [HttpGet]
         [Route("~/api/StockType/GetStockTypeByName")]
-        private HttpResponseMessage GetStockTypeByName(string name)
+        public HttpResponseMessage GetStockTypeByName(string name)
         {
             HttpResponseMessage res = new HttpResponseMessage();
             BLL_StockType obj = new BLL_StockType();
@@ -99,9 +99,20 @@ namespace QSSAPI.Controllers
             return Request.CreateResponse(HttpStatusCode.OK, result);
         }
 
-        // PUT api/<controller>/5
-        public void Put(int id, [FromBody]string value)
+        // PUT api/StockType
+        public HttpResponseMessage Put(int id, [FromBody]string value)
         {
+            BLL_StockType obj = new BLL_StockType();
+            BOL_StockType objStockType = new BOL_StockType();
+            StreamReader reader = new StreamReader(HttpContext.Current.Request.InputStream);
+            reader.BaseStream.Position = 0;
+            string requestFromPut = reader.ReadToEnd();
+            objStockType = JsonConvert.DeserializeObject<BOL_StockType>(requestFromPut);
+            string result = "";
+            result = obj.UpdateStockType(objStockType) + ";";
+
+            return Request.CreateResponse(HttpStatusCode.OK, result);
+            
         }
 
         // DELETE api/<controller>/5

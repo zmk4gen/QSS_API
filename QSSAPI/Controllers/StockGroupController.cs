@@ -38,7 +38,7 @@ namespace QSSAPI.Controllers
         }
 
         [HttpGet]
-        private HttpResponseMessage GetAllStockGroup()
+        public HttpResponseMessage GetAllStockGroup()
         {
             HttpResponseMessage res = new HttpResponseMessage();
             BLL_StockGroup obj = new BLL_StockGroup();
@@ -53,11 +53,11 @@ namespace QSSAPI.Controllers
 
         [HttpGet]
         [Route("~/api/StockGroup/GetStockGroupByCode")]
-        private HttpResponseMessage GetStockGroupByCode(string stockGroupCode)
+        public HttpResponseMessage GetStockGroupByCode(string code)
         {
             HttpResponseMessage res = new HttpResponseMessage();
             BLL_StockGroup obj = new BLL_StockGroup();
-            DataTable objList = obj.BindStockGroupByCode(stockGroupCode);
+            DataTable objList = obj.BindStockGroupByCode(code);
             objList.TableName = "Stock_Group";
 
             res = Request.CreateResponse(HttpStatusCode.OK, objList);
@@ -68,7 +68,7 @@ namespace QSSAPI.Controllers
 
         [HttpGet]
         [Route("~/api/StockGroup/GetStockGroupByName")]
-        private HttpResponseMessage GetStockGroupByName(string name)
+        public HttpResponseMessage GetStockGroupByName(string name)
         {
             HttpResponseMessage res = new HttpResponseMessage();
             BLL_StockGroup obj = new BLL_StockGroup();
@@ -97,9 +97,19 @@ namespace QSSAPI.Controllers
             return Request.CreateResponse(HttpStatusCode.OK, result);
         }
 
-        // PUT api/<controller>/5
-        public void Put(int id, [FromBody]string value)
+        // PUT api/StockGroup
+        public HttpResponseMessage Put(int id, [FromBody]string value)
         {
+            BLL_StockGroup obj = new BLL_StockGroup();
+            BOL_StockGroup objStockGroup = new BOL_StockGroup();
+            StreamReader reader = new StreamReader(HttpContext.Current.Request.InputStream);
+            reader.BaseStream.Position = 0;
+            string requestFromPut = reader.ReadToEnd();
+            objStockGroup = JsonConvert.DeserializeObject<BOL_StockGroup>(requestFromPut);
+            string result = "";
+            result = obj.UpdateStockGroup(objStockGroup) + ";";
+
+            return Request.CreateResponse(HttpStatusCode.OK, result);
         }
 
         // DELETE api/<controller>/5

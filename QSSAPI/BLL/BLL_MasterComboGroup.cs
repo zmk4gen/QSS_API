@@ -48,5 +48,25 @@ namespace QSSAPI.BLL
             }
             return effectID;
         }
+
+        public int UpdateMasterComboGroup(BOL_Master_Combogroup bolMasterComboGroup)
+        {
+            int effectID = 0;
+            try
+            {
+                SqlConjunction.StartTransaction();
+
+                DAL_MasterComboGroup dalMasterComboGroup = new DAL_MasterComboGroup();
+                effectID = dalMasterComboGroup.Update_MasterComboGroup(bolMasterComboGroup);
+
+                SqlConjunction.CommitTransaction();
+            }
+            catch (Exception ex)
+            {
+                SqlConjunction.RollbackTransaction(ex.Message);
+
+            }
+            return effectID;
+        }
     }
 }

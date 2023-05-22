@@ -14,7 +14,7 @@ namespace QSSAPI.DAL
         public DataTable BindStoreDetail()
         {
             SqlCommand cmd = new SqlCommand();
-            cmd.CommandText = "Store_Detail_select";
+            cmd.CommandText = "BindStoreDetail_API";
             cmd.CommandType = CommandType.StoredProcedure;
 
             return SqlConjunction.GetSQLDataTable(cmd);
@@ -22,9 +22,11 @@ namespace QSSAPI.DAL
         public DataTable BindStoreDetailByNumber(string number)
         {
             SqlCommand cmd = new SqlCommand();
-            cmd.CommandText = "Store_Detail_select";
+            //cmd.CommandText = "Store_Detail_select";
+            cmd.CommandText = "BindStoreDetail_API";
             cmd.CommandType = CommandType.StoredProcedure;
             cmd.Parameters.AddWithValue("@br_Code", number);
+            cmd.Parameters.AddWithValue("@status", "true");
 
             return SqlConjunction.GetSQLDataTable(cmd);
         }
@@ -34,7 +36,8 @@ namespace QSSAPI.DAL
             SqlCommand cmd = new SqlCommand();
             cmd.CommandText = "BindStoreDetail_API";
             cmd.CommandType = CommandType.StoredProcedure;
-            cmd.Parameters.AddWithValue("@name", name);
+            cmd.Parameters.AddWithValue("@br_Name", name);
+            cmd.Parameters.AddWithValue("@status", "false");
             return SqlConjunction.GetSQLDataTable(cmd);
         }
     }

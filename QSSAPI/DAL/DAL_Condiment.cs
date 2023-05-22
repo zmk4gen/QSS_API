@@ -25,6 +25,7 @@ namespace QSSAPI.DAL
             cmd.CommandText = "BindCondiment_API";
             cmd.CommandType = CommandType.StoredProcedure;
             cmd.Parameters.AddWithValue("@cond_number", number);
+            cmd.Parameters.AddWithValue("@status", "true");
 
             return SqlConjunction.GetSQLDataTable(cmd);
         }
@@ -34,7 +35,8 @@ namespace QSSAPI.DAL
             SqlCommand cmd = new SqlCommand();
             cmd.CommandText = "BindCondiment_API";
             cmd.CommandType = CommandType.StoredProcedure;
-            cmd.Parameters.AddWithValue("@name", name);
+            cmd.Parameters.AddWithValue("@cond_name1", name);
+            cmd.Parameters.AddWithValue("@status", "false");
             return SqlConjunction.GetSQLDataTable(cmd);
         }
 
@@ -56,6 +58,29 @@ namespace QSSAPI.DAL
             cmd.Parameters.AddWithValue("@cond_createdate",DateTime.Now);
             cmd.Parameters.AddWithValue("@cond_createby", bol_Condiment.cond_createby);
             cmd.Parameters.AddWithValue("@cond_lastupdate",DateTime.Now);
+            cmd.Parameters.AddWithValue("@cond_updateby", bol_Condiment.cond_updateby);
+
+            return SqlConjunction.GetSQLTransVoid(cmd);
+        }
+
+        public int Update_Condiment(BOL_Condiment bol_Condiment)
+        {
+            SqlCommand cmd = new SqlCommand();
+            cmd.CommandText = "UpdateCondiment";
+            cmd.CommandType = CommandType.StoredProcedure;
+
+            cmd.Parameters.AddWithValue("@cond_number", bol_Condiment.cond_number);
+            cmd.Parameters.AddWithValue("@cond_name1", bol_Condiment.cond_name1);
+            cmd.Parameters.AddWithValue("@cond_name2", bol_Condiment.cond_name2);
+            cmd.Parameters.AddWithValue("@cond_name3", bol_Condiment.cond_name3);
+            cmd.Parameters.AddWithValue("@cond_qty", bol_Condiment.cond_qty);
+            cmd.Parameters.AddWithValue("@cond_style", bol_Condiment.cond_style);
+            cmd.Parameters.AddWithValue("@cond_hhtstyle", bol_Condiment.cond_hhtstyle);
+            cmd.Parameters.AddWithValue("@cond_typedef", bol_Condiment.cond_typedef);
+            cmd.Parameters.AddWithValue("@cond_inactive", bol_Condiment.cond_inactive);
+            cmd.Parameters.AddWithValue("@cond_createdate", DateTime.Now);
+            cmd.Parameters.AddWithValue("@cond_createby", bol_Condiment.cond_createby);
+            cmd.Parameters.AddWithValue("@cond_lastupdate", DateTime.Now);
             cmd.Parameters.AddWithValue("@cond_updateby", bol_Condiment.cond_updateby);
 
             return SqlConjunction.GetSQLTransVoid(cmd);

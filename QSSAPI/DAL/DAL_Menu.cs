@@ -32,7 +32,7 @@ namespace QSSAPI.DAL
             cmd.CommandText = "BindMenuitem_API";
             cmd.CommandType = CommandType.StoredProcedure;
             cmd.Parameters.AddWithValue("@stockno", stockno);
-            cmd.Parameters.AddWithValue("@st_ingredient", true);
+            cmd.Parameters.AddWithValue("@st_ingredient", "true");
             return SqlConjunction.GetSQLDataTable(cmd);
         }
 
@@ -43,7 +43,7 @@ namespace QSSAPI.DAL
             cmd.CommandType = CommandType.StoredProcedure;
 
             cmd.Parameters.AddWithValue("@Desc", desc);
-            cmd.Parameters.AddWithValue("@st_ingredient", false);
+            cmd.Parameters.AddWithValue("@st_ingredient", "false");
             return SqlConjunction.GetSQLDataTable(cmd);
         }
 

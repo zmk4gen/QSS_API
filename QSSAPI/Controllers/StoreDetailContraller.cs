@@ -40,7 +40,7 @@ namespace QSSAPI.Controllers
             }
 
             [HttpGet]
-            private HttpResponseMessage GetAllStoreDetail()
+            public HttpResponseMessage GetAllStoreDetail()
             {
                 HttpResponseMessage res = new HttpResponseMessage();
                 BLL_StoreDetail obj = new BLL_StoreDetail();
@@ -55,11 +55,11 @@ namespace QSSAPI.Controllers
 
             [HttpGet]
             [Route("~/api/StoreDetail/GetStoreDetailByCode")]
-            private HttpResponseMessage GetStoreDetailByCode(string StoreDetailCode)
+            public HttpResponseMessage GetStoreDetailByCode(string code)
             {
                 HttpResponseMessage res = new HttpResponseMessage();
                 BLL_StoreDetail obj = new BLL_StoreDetail();
-                DataTable objList = obj.BindStoreDetailByCode(StoreDetailCode);
+                DataTable objList = obj.BindStoreDetailByCode(code);
                 objList.TableName = "StoreDetail";
 
                 res = Request.CreateResponse(HttpStatusCode.OK, objList);
@@ -70,7 +70,7 @@ namespace QSSAPI.Controllers
 
             [HttpGet]
             [Route("~/api/StoreDetail/GetStoreDetailByName")]
-            private HttpResponseMessage GetStoreDetailByName(string name)
+            public HttpResponseMessage GetStoreDetailByName(string name)
             {
                 HttpResponseMessage res = new HttpResponseMessage();
                 BLL_StoreDetail obj = new BLL_StoreDetail();

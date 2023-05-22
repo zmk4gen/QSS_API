@@ -19,26 +19,22 @@ namespace QSSAPI.Controllers
     {
         [HttpGet]
         [Route("~/api/TaxItem/Get")]
-        public HttpResponseMessage Get(string taxitem_stockid = null, string name = null)
+        public HttpResponseMessage Get(string code = null, string name = null)
         {
             HttpResponseMessage res = new HttpResponseMessage();
-            if ((taxitem_stockid == "" || taxitem_stockid == null) && (name == "" || name == null))
+            if ((code == "" || code == null) && (name == "" || name == null))
             {
                 res = GetAllTaxItem();
             }
-            //else if (name != "" && name != null)
-            //{
-            //    res = GetTaxItemByName(name);
-            //}
             else
             {
-                res = GetTaxItemByCode(taxitem_stockid);
+                res = GetTaxItemByCode(code);
             }
             return res;
         }
 
         [HttpGet]
-        private HttpResponseMessage GetAllTaxItem()
+        public HttpResponseMessage GetAllTaxItem()
         {
             HttpResponseMessage res = new HttpResponseMessage();
             BLL_TaxItem obj = new BLL_TaxItem();
@@ -53,11 +49,11 @@ namespace QSSAPI.Controllers
 
         [HttpGet]
         [Route("~/api/TaxItem/GetTaxItemByCode")]
-        private HttpResponseMessage GetTaxItemByCode(string TaxItemCode)
+        public HttpResponseMessage GetTaxItemByCode(string code)
         {
             HttpResponseMessage res = new HttpResponseMessage();
             BLL_TaxItem obj = new BLL_TaxItem();
-            DataTable objList = obj.BindTaxItemByCode(TaxItemCode);
+            DataTable objList = obj.BindTaxItemByCode(code);
             objList.TableName = "TaxItem";
 
             res = Request.CreateResponse(HttpStatusCode.OK, objList);

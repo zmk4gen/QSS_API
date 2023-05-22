@@ -24,7 +24,8 @@ namespace QSSAPI.DAL
             SqlCommand cmd = new SqlCommand();
             cmd.CommandText = "BindUserProfile_API";
             cmd.CommandType = CommandType.StoredProcedure;
-            cmd.Parameters.AddWithValue("@cond_number", number);
+            cmd.Parameters.AddWithValue("@up_ID", number);
+            cmd.Parameters.AddWithValue("@status", "true");
 
             return SqlConjunction.GetSQLDataTable(cmd);
         }
@@ -34,7 +35,8 @@ namespace QSSAPI.DAL
             SqlCommand cmd = new SqlCommand();
             cmd.CommandText = "BindUserProfile_API";
             cmd.CommandType = CommandType.StoredProcedure;
-            cmd.Parameters.AddWithValue("@name", name);
+            cmd.Parameters.AddWithValue("@up_Name", name);
+            cmd.Parameters.AddWithValue("@status", "false");
             return SqlConjunction.GetSQLDataTable(cmd);
         }
         public int Insert_UserProfile(BOL_UserProfile bol_UserProfile)

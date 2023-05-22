@@ -42,7 +42,7 @@ namespace QSSAPI.Controllers
             return res;
         }
         [HttpGet]
-        private HttpResponseMessage GetAllMenuItem()
+        public HttpResponseMessage GetAllMenuItem()
         {
             HttpResponseMessage res = new HttpResponseMessage();
             BLL_Menu obj = new BLL_Menu();
@@ -56,7 +56,7 @@ namespace QSSAPI.Controllers
         }
         [HttpGet]
         [Route("~/api/Menu/GetMenuItemByID")]
-        private HttpResponseMessage GetMenuItemByStockNo(string stockno)
+        public HttpResponseMessage GetMenuItemByStockNo(string stockno)
         {
             HttpResponseMessage res = new HttpResponseMessage();
             BLL_Menu obj = new BLL_Menu();
@@ -70,7 +70,7 @@ namespace QSSAPI.Controllers
         }
         [Route("~/api/Menu/GetMenuItemByDesc")]
         [HttpGet]
-        private HttpResponseMessage GetMenuItemByDesc(string Desc)
+        public HttpResponseMessage GetMenuItemByDesc(string Desc)
         {
             HttpResponseMessage res = new HttpResponseMessage();
             BLL_Menu obj = new BLL_Menu();

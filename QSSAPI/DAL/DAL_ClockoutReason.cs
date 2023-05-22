@@ -25,6 +25,7 @@ namespace QSSAPI.DAL
             cmd.CommandText = "BindClockoutReason_API";
             cmd.CommandType = CommandType.StoredProcedure;
             cmd.Parameters.AddWithValue("@cor_Code", number);
+            cmd.Parameters.AddWithValue("@status", "true");
 
             return SqlConjunction.GetSQLDataTable(cmd);
         }
@@ -34,7 +35,9 @@ namespace QSSAPI.DAL
             SqlCommand cmd = new SqlCommand();
             cmd.CommandText = "BindClockoutReason_API";
             cmd.CommandType = CommandType.StoredProcedure;
-            cmd.Parameters.AddWithValue("@cor_name", name);
+            cmd.Parameters.AddWithValue("@cor_Name", name);
+            cmd.Parameters.AddWithValue("@status", "false");
+
             return SqlConjunction.GetSQLDataTable(cmd);
         }
 

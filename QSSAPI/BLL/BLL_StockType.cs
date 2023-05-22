@@ -76,5 +76,26 @@ namespace QSSAPI.BLL
             return effectID;
         }
 
+        public int UpdateStockType(BOL_StockType bolstocktype)
+
+        {
+            int effectID = 0;
+            try
+            {
+                SqlConjunction.StartTransaction();
+
+                DAL_StockType dalstocktype = new DAL_StockType();
+                effectID = dalstocktype.Update_StockType(bolstocktype);
+
+                SqlConjunction.CommitTransaction();
+
+            }
+            catch (Exception ex)
+            {
+                SqlConjunction.RollbackTransaction(ex.Message);
+            }
+            return effectID;
+        }
+
     }
 }

@@ -48,5 +48,25 @@ namespace QSSAPI.BLL
             }
             return effectID;
         }
+
+        public int Update_mstr_slu(BOL_mstr_slu bol_mstr_slu)
+        {
+            int effectID = 0;
+            try
+            {
+                SqlConjunction.StartTransaction();
+
+                DAL_mstr_slu dal_mstr_slu = new DAL_mstr_slu();
+                effectID = dal_mstr_slu.Update_mstr_slu(bol_mstr_slu);
+
+                SqlConjunction.CommitTransaction();
+            }
+            catch (Exception ex)
+            {
+                SqlConjunction.RollbackTransaction(ex.Message);
+
+            }
+            return effectID;
+        }
     }
 }

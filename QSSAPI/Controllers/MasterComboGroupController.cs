@@ -19,10 +19,10 @@ namespace QSSAPI.Controllers
     {
         [HttpGet]
         [Route("~/api/MasterComboGroup/Get")]
-        public HttpResponseMessage Get(string cond_code = null, string name = null)
+        public HttpResponseMessage Get(string cbo_number = null, string name = null)
         {
             HttpResponseMessage res = new HttpResponseMessage();
-            if ((cond_code == "" || cond_code == null) && (name == "" || name == null))
+            if ((cbo_number == "" || cbo_number == null) && (name == "" || name == null))
             {
                 res = GetAllMasterComboGroup();
             }
@@ -30,9 +30,13 @@ namespace QSSAPI.Controllers
             {
                 res = GetMasterComboGroupByName(name);
             }
+            else if (cbo_number != "" && cbo_number != null)
+            {
+                res = GetMasterComboGroupByCode(cbo_number);
+            }
             else
             {
-                res = GetMasterComboGroupByCode(cond_code);
+                res = GetMasterComboGroupByCodeANDName(cbo_number,name);
             }
             return res;
         }
@@ -80,6 +84,20 @@ namespace QSSAPI.Controllers
             return res;
         }
 
+        [HttpGet]
+        [Route("~/api/MasterComboGroup/GetMasterComboGroupByCodeANDName")]
+        public HttpResponseMessage GetMasterComboGroupByCodeANDName(string code, string name)
+        {
+            HttpResponseMessage res = new HttpResponseMessage();
+            BLL_MasterComboGroup obj = new BLL_MasterComboGroup();
+            DataTable objList = obj.BindMasterComboGroupByCodeANDName(code, name);
+            objList.TableName = "mstr_combogroup";
+
+            res = Request.CreateResponse(HttpStatusCode.OK, objList);
+            res.Content.Headers.ContentType = new MediaTypeHeaderValue("application/json");
+            return res;
+        }
+
         // POST api/MasterComboGroup
         [HttpPost]
         [Route("~/api/MasterComboGroup/InsertMasterComboGroup")]
@@ -104,6 +122,8 @@ namespace QSSAPI.Controllers
         }
 
         // PUT api/<controller>/5
+        [HttpPut]
+        [Route("~/api/MasterComboGroup/UpdateMasterComboGroup")]
         public HttpResponseMessage Put(int id, [FromBody]string value)
         {
             BLL_MasterComboGroup obj = new BLL_MasterComboGroup();

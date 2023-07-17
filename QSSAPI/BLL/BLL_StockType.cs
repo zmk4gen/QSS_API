@@ -49,6 +49,12 @@ namespace QSSAPI.BLL
             return dalstocktype.BindStockTypeByName(name);
         }
 
+        public DataTable BindStockTypeByCodeANDName(string code,string name)
+        {
+            DAL_StockType dalstocktype = new DAL_StockType();
+            return dalstocktype.BindStockTypeByCodeANDName(code,name);
+        }
+
         public int InsertStockType(BOL_StockType bolstocktype)
 
         {

@@ -29,6 +29,12 @@ namespace QSSAPI.BLL
             return dal_mstr_slu.Bind_mstr_sluByName(name);
         }
 
+        public DataTable Bind_mstr_sluByCodeANDName(string code,string name)
+        {
+            DAL_mstr_slu dal_mstr_slu = new DAL_mstr_slu();
+            return dal_mstr_slu.Bind_mstr_sluByCodeANDName(code,name);
+        }
+
         public int Insert_mstr_slu(BOL_mstr_slu bol_mstr_slu)
         {
             int effectID = 0;

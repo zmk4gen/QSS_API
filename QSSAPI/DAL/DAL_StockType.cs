@@ -59,8 +59,21 @@ namespace QSSAPI.DAL
             return SqlConjunction.GetSQLDataTable(cmd);
         }
 
+        public DataTable BindStockTypeByCodeANDName(string code,string name)
+        {
+            SqlCommand cmd = new SqlCommand();
+            cmd.CommandText = "BindStockType_API";
 
-       public int Insert_StockType(BOL_StockType bol_stockType)
+            cmd.Parameters.AddWithValue("@stype_Code", code);
+            cmd.Parameters.AddWithValue("@stype_Name", name);
+            cmd.Parameters.AddWithValue("@status", "false");
+            cmd.CommandType = CommandType.StoredProcedure;
+
+            return SqlConjunction.GetSQLDataTable(cmd);
+        }
+
+
+        public int Insert_StockType(BOL_StockType bol_stockType)
         {
             SqlCommand cmd = new SqlCommand();
             cmd.CommandText = "Insert_Stock_Type_API";

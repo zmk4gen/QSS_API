@@ -29,6 +29,12 @@ namespace QSSAPI.BLL
             return dalMasterComboGroup.BindMasterComboGroupByName(name);
         }
 
+        public DataTable BindMasterComboGroupByCodeANDName(string code,string name)
+        {
+            DAL_MasterComboGroup dalMasterComboGroup = new DAL_MasterComboGroup();
+            return dalMasterComboGroup.BindMasterComboGroupByCodeANDName(code, name);
+        }
+
         public int InserMasterComboGroup(BOL_Master_Combogroup bolMasterComboGroup)
         {
             int effectID = 0;

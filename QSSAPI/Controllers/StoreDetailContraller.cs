@@ -32,9 +32,13 @@ namespace QSSAPI.Controllers
                 {
                     res = GetStoreDetailByName(name);
                 }
-                else
+                else if (br_Code != "" && br_Code != null)
                 {
                     res = GetStoreDetailByCode(br_Code);
+                }
+                else
+                {
+                    res = GetStoreDetailByCodeANDName(br_Code,name);
                 }
                 return res;
             }
@@ -75,6 +79,20 @@ namespace QSSAPI.Controllers
                 HttpResponseMessage res = new HttpResponseMessage();
                 BLL_StoreDetail obj = new BLL_StoreDetail();
                 DataTable objList = obj.BindStoreDetailByName(name);
+                objList.TableName = "StoreDetail";
+
+                res = Request.CreateResponse(HttpStatusCode.OK, objList);
+                res.Content.Headers.ContentType = new MediaTypeHeaderValue("application/json");
+                return res;
+            }
+
+            [HttpGet]
+            [Route("~/api/StoreDetail/GetStoreDetailByCodeANDName")]
+            public HttpResponseMessage GetStoreDetailByCodeANDName(string code,string name)
+            {
+                HttpResponseMessage res = new HttpResponseMessage();
+                BLL_StoreDetail obj = new BLL_StoreDetail();
+                DataTable objList = obj.BindStoreDetailByCodeANDName(code,name);
                 objList.TableName = "StoreDetail";
 
                 res = Request.CreateResponse(HttpStatusCode.OK, objList);

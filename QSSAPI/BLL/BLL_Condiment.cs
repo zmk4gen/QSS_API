@@ -29,6 +29,12 @@ namespace QSSAPI.BLL
             return dalCondiment.BindCondimentByName(name);
         }
 
+        public DataTable BindCondimentByCodeANDName(string code,string name)
+        {
+            DAL_Condiment dalCondiment = new DAL_Condiment();
+            return dalCondiment.BindCondimentByCodeANDName(code,name);
+        }
+
         public int InserCondiment(BOL_Condiment bolCondiment)
         {
             int effectID = 0;

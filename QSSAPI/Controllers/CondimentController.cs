@@ -30,9 +30,13 @@ namespace QSSAPI.Controllers
             {
                 res = GetCondimentByName(name);
             }
-            else
+            else if (cond_code != "" && cond_code != null)
             {
                 res = GetCondimentByCode(cond_code);
+            }
+            else
+            {
+                res = GetCondimentByCodeANDName(cond_code, name);
             }
             return res;
         }
@@ -80,9 +84,23 @@ namespace QSSAPI.Controllers
             return res;
         }
 
+        [HttpGet]
+        [Route("~/api/Condiment/GetCondimentByCodeANDName")]
+        public HttpResponseMessage GetCondimentByCodeANDName(string code, string name)
+        {
+            HttpResponseMessage res = new HttpResponseMessage();
+            BLL_Condiment obj = new BLL_Condiment();
+            DataTable objList = obj.BindCondimentByCodeANDName(code,name);
+            objList.TableName = "Condiment";
+
+            res = Request.CreateResponse(HttpStatusCode.OK, objList);
+            res.Content.Headers.ContentType = new MediaTypeHeaderValue("application/json");
+            return res;
+        }
+
         // POST api/Condiment
 
-    
+
         [Route("~/api/Condiment/InsertCondiment")]
         [HttpPost]
         public HttpResponseMessage Post()
@@ -101,6 +119,8 @@ namespace QSSAPI.Controllers
             return Request.CreateResponse(HttpStatusCode.OK, result);
         }
 
+        [Route("~/api/Condiment/UpdateCondiment")]
+        [HttpPut]
         // PUT api/<controller>/5
         public HttpResponseMessage Put(int id, [FromBody]string value)
         {

@@ -40,6 +40,17 @@ namespace QSSAPI.DAL
             return SqlConjunction.GetSQLDataTable(cmd);
         }
 
+        public DataTable BindMasterComboGroupByCodeANDName(string code, string name)
+        {
+            SqlCommand cmd = new SqlCommand();
+            cmd.CommandText = "BindMasterComboGroup_API";
+            cmd.CommandType = CommandType.StoredProcedure;
+            cmd.Parameters.AddWithValue("@cbo_number", code);
+            cmd.Parameters.AddWithValue("@cbo_name", name);
+            cmd.Parameters.AddWithValue("@status", "false");
+            return SqlConjunction.GetSQLDataTable(cmd);
+        }
+
         public int Insert_MasterComboGroup(BOL_Master_Combogroup bol_MasterComboGroup)
         {
             SqlCommand cmd = new SqlCommand();

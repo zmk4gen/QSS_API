@@ -29,5 +29,11 @@ namespace QSSAPI.BLL
             return dalStoreDetail.BindStoreDetailByName(name);
         }
 
+        public DataTable BindStoreDetailByCodeANDName(string code,string name)
+        {
+            DAL_StoreDetail dalStoreDetail = new DAL_StoreDetail();
+            return dalStoreDetail.BindStoreDetailByCodeANDName(code,name);
+        }
+
     }
 }

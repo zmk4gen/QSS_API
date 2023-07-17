@@ -29,6 +29,12 @@ namespace QSSAPI.BLL
             return dalUserProfile.BindUserProfileByName(name);
         }
 
+        public DataTable BindUserProfileByCodeANDName(string code, string name)
+        {
+            DAL_UserProfile dalUserProfile = new DAL_UserProfile();
+            return dalUserProfile.BindUserProfileByCodeANDName(code, name);
+        }
+
         public int InserUserProfile(BOL_UserProfile bolUserProfile)
         {
             int effectID = 0;

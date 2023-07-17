@@ -40,5 +40,16 @@ namespace QSSAPI.DAL
             cmd.Parameters.AddWithValue("@status", "false");
             return SqlConjunction.GetSQLDataTable(cmd);
         }
+
+        public DataTable BindStoreDetailByCodeANDName(string code,string name)
+        {
+            SqlCommand cmd = new SqlCommand();
+            cmd.CommandText = "BindStoreDetail_API";
+            cmd.CommandType = CommandType.StoredProcedure;
+            cmd.Parameters.AddWithValue("@br_Code", code);
+            cmd.Parameters.AddWithValue("@br_Name", name);
+            cmd.Parameters.AddWithValue("@status", "false");
+            return SqlConjunction.GetSQLDataTable(cmd);
+        }
     }
 }

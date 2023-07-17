@@ -19,10 +19,10 @@ namespace QSSAPI.Controllers
     {
         [HttpGet]
         [Route("~/api/ClockoutReason/Get")]
-        public HttpResponseMessage Get(string cond_code = null, string name = null)
+        public HttpResponseMessage Get(string code = null, string name = null)
         {
             HttpResponseMessage res = new HttpResponseMessage();
-            if ((cond_code == "" || cond_code == null) && (name == "" || name == null))
+            if ((code == "" || code == null) && (name == "" || name == null))
             {
                 res = GetAllClockoutReason();
             }
@@ -30,9 +30,13 @@ namespace QSSAPI.Controllers
             {
                 res = GetClockoutReasonByName(name);
             }
+            else if (code != "" && code != null)
+            {
+                res = GetClockoutReasonByCode(code);
+            }
             else
             {
-                res = GetClockoutReasonByCode(cond_code);
+                res = GetClockoutReasonByCodeANDName(code, name);
             }
             return res;
         }
@@ -73,6 +77,20 @@ namespace QSSAPI.Controllers
             HttpResponseMessage res = new HttpResponseMessage();
             BLL_ClockoutReason obj = new BLL_ClockoutReason();
             DataTable objList = obj.BindClockoutReasonByName(name);
+            objList.TableName = "ClockoutReason";
+
+            res = Request.CreateResponse(HttpStatusCode.OK, objList);
+            res.Content.Headers.ContentType = new MediaTypeHeaderValue("application/json");
+            return res;
+        }
+
+        [HttpGet]
+        [Route("~/api/ClockoutReason/GetClockoutReasonByCodeANDName")]
+        public HttpResponseMessage GetClockoutReasonByCodeANDName(string code, string name)
+        {
+            HttpResponseMessage res = new HttpResponseMessage();
+            BLL_ClockoutReason obj = new BLL_ClockoutReason();
+            DataTable objList = obj.BindClockoutReasonByCodeANDName(code, name);
             objList.TableName = "ClockoutReason";
 
             res = Request.CreateResponse(HttpStatusCode.OK, objList);

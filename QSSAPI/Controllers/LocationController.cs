@@ -19,10 +19,10 @@ namespace QSSAPI.Controllers
     {
         [HttpGet]
         [Route("~/api/Location/Get")]
-        public HttpResponseMessage Get(string cond_code = null, string name = null)
+        public HttpResponseMessage Get(string code = null, string name = null)
         {
             HttpResponseMessage res = new HttpResponseMessage();
-            if ((cond_code == "" || cond_code == null) && (name == "" || name == null))
+            if ((code == "" || code == null) && (name == "" || name == null))
             {
                 res = GetAllLocation();
             }
@@ -30,9 +30,13 @@ namespace QSSAPI.Controllers
             {
                 res = GetLocationByName(name);
             }
+            else if (code != "" && code != null)
+            {
+                res = GetLocationByCode(code);
+            }
             else
             {
-                res = GetLocationByCode(cond_code);
+                res = GetLocationByCodeANDName(code,name);
             }
             return res;
         }
@@ -73,6 +77,20 @@ namespace QSSAPI.Controllers
             HttpResponseMessage res = new HttpResponseMessage();
             BLL_Location obj = new BLL_Location();
             DataTable objList = obj.BindLocationByName(name);
+            objList.TableName = "Location";
+
+            res = Request.CreateResponse(HttpStatusCode.OK, objList);
+            res.Content.Headers.ContentType = new MediaTypeHeaderValue("application/json");
+            return res;
+        }
+
+        [HttpGet]
+        [Route("~/api/Location/GetLocationByCodeANDName")]
+        public HttpResponseMessage GetLocationByCodeANDName(string code,string name)
+        {
+            HttpResponseMessage res = new HttpResponseMessage();
+            BLL_Location obj = new BLL_Location();
+            DataTable objList = obj.BindLocationByCodeANDName(code, name);
             objList.TableName = "Location";
 
             res = Request.CreateResponse(HttpStatusCode.OK, objList);

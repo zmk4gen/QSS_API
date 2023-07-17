@@ -29,6 +29,12 @@ namespace QSSAPI.BLL
             return dalStoreGroup.BindStoreGroupByName(name);
         }
 
+        public DataTable BindStoreGroupByCodeANDName(string code,string name)
+        {
+            DAL_StoreGroup dalStoreGroup = new DAL_StoreGroup();
+            return dalStoreGroup.BindStoreGroupByCodeANDName(code, name);
+        }
+
         public int InserStoreGroup(BOL_StoreGroup bolStoreGroup)
         {
             int effectID = 0;
@@ -38,6 +44,26 @@ namespace QSSAPI.BLL
 
                 DAL_StoreGroup dalStoreGroup = new DAL_StoreGroup();
                 effectID = dalStoreGroup.Insert_StoreGroup(bolStoreGroup);
+
+                SqlConjunction.CommitTransaction();
+            }
+            catch (Exception ex)
+            {
+                SqlConjunction.RollbackTransaction(ex.Message);
+
+            }
+            return effectID;
+        }
+
+        public int UpdateStoreGroup(BOL_StoreGroup bolStoreGroup)
+        {
+            int effectID = 0;
+            try
+            {
+                SqlConjunction.StartTransaction();
+
+                DAL_StoreGroup dalStoreGroup = new DAL_StoreGroup();
+                effectID = dalStoreGroup.Update_StoreGroup(bolStoreGroup);
 
                 SqlConjunction.CommitTransaction();
             }

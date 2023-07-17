@@ -58,6 +58,18 @@ namespace QSSAPI.DAL
             return SqlConjunction.GetSQLDataTable(cmd);
         }
 
+        public DataTable BindStockGroupByCodeANDName(string code, string name)
+        {
+            SqlCommand cmd = new SqlCommand();
+            cmd.CommandText = "BindStockGroup_API";
+            cmd.Parameters.AddWithValue("@sg_Code", code);
+            cmd.Parameters.AddWithValue("@sg_Name", name);
+            cmd.Parameters.AddWithValue("@status", "false");
+            cmd.CommandType = CommandType.StoredProcedure;
+
+            return SqlConjunction.GetSQLDataTable(cmd);
+        }
+
         public int Insert_StockGroup(BOL_StockGroup bol_stockGroup)
 
         {

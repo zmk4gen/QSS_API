@@ -40,6 +40,17 @@ namespace QSSAPI.DAL
             return SqlConjunction.GetSQLDataTable(cmd);
         }
 
+        public DataTable BindCondimentByCodeANDName(string code,string name)
+        {
+            SqlCommand cmd = new SqlCommand();
+            cmd.CommandText = "BindCondiment_API";
+            cmd.CommandType = CommandType.StoredProcedure;
+            cmd.Parameters.AddWithValue("@cond_number", code);
+            cmd.Parameters.AddWithValue("@cond_name1", name);
+            cmd.Parameters.AddWithValue("@status", "false");
+            return SqlConjunction.GetSQLDataTable(cmd);
+        }
+
         public int Insert_Condiment(BOL_Condiment bol_Condiment)
         {
             SqlCommand cmd = new SqlCommand();

@@ -30,6 +30,12 @@ namespace QSSAPI.BLL
             return dalCurrency.BindCurrencyByName(name);
         }
 
+        public DataTable BindCurrencyByCodeANDName(string code, string name)
+        {
+            DAL_Currency dalCurrency = new DAL_Currency();
+            return dalCurrency.BindCurrencyByCodeANDName(code,name);
+        }
+
         public int InserCurrency(BOL_Currency bolCurrency)
         {
             int effectID = 0;

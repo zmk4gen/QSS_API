@@ -43,6 +43,18 @@ namespace QSSAPI.DAL
             return SqlConjunction.GetSQLDataTable(cmd);
         }
 
+
+        public DataTable Bind_mstr_sluByCodeANDName(string code, string name)
+        {
+            SqlCommand cmd = new SqlCommand();
+            cmd.CommandText = "Bind_mstr_slu_API";
+            cmd.CommandType = CommandType.StoredProcedure;
+            cmd.Parameters.AddWithValue("@slu_number", code);
+            cmd.Parameters.AddWithValue("@slu_name", name);
+            cmd.Parameters.AddWithValue("@status", "false");
+
+            return SqlConjunction.GetSQLDataTable(cmd);
+        }
         public int Insert_mstr_slu(BOL_mstr_slu bol_mstr_slu)
         {
             SqlCommand cmd = new SqlCommand();

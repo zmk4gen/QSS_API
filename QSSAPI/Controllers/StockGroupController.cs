@@ -30,9 +30,13 @@ namespace QSSAPI.Controllers
             {
                 res = GetStockGroupByName(name);
             }
-            else
+            else if (stockGroupcode != "" && stockGroupcode != null)
             {
                 res = GetStockGroupByCode(stockGroupcode);
+            }
+            else
+            {
+                res = GetStockGroupByCodeANDName(stockGroupcode, name);
             }
             return res;
         }
@@ -80,6 +84,20 @@ namespace QSSAPI.Controllers
             return res;
         }
 
+        [HttpGet]
+        [Route("~/api/StockGroup/GetStockGroupByCodeANDName")]
+        public HttpResponseMessage GetStockGroupByCodeANDName(string code, string name)
+        {
+            HttpResponseMessage res = new HttpResponseMessage();
+            BLL_StockGroup obj = new BLL_StockGroup();
+            DataTable objList = obj.BindStockGroupByCodeANDName(code,name);
+            objList.TableName = "Stock_Group";
+
+            res = Request.CreateResponse(HttpStatusCode.OK, objList);
+            res.Content.Headers.ContentType = new MediaTypeHeaderValue("application/json");
+            return res;
+        }
+
         // POST api/StockGroup
         [HttpPost]
         [Route("~/api/StockGroup/InsertStockGroup")]
@@ -100,6 +118,8 @@ namespace QSSAPI.Controllers
         }
 
         // PUT api/StockGroup
+        [HttpPut]
+        [Route("~/api/StockGroup/UpdateStockGroup")]
         public HttpResponseMessage Put(int id, [FromBody]string value)
         {
             BLL_StockGroup obj = new BLL_StockGroup();

@@ -35,9 +35,13 @@ namespace QSSAPI.Controllers
             {
                 res = GetMenuItemByDesc(Desc);
             }
-            else
+            else if (stockno != "" && stockno != null)
             {
                 res = GetMenuItemByStockNo(stockno);
+            }
+            else
+            {
+                res = GetMenuItemByStockNoANDDesc(stockno,Desc);
             }
             return res;
         }
@@ -54,6 +58,7 @@ namespace QSSAPI.Controllers
             res.Content.Headers.ContentType = new MediaTypeHeaderValue("application/json");
             return res;
         }
+        
         [HttpGet]
         [Route("~/api/Menu/GetMenuItemByID")]
         public HttpResponseMessage GetMenuItemByStockNo(string stockno)
@@ -76,6 +81,21 @@ namespace QSSAPI.Controllers
             BLL_Menu obj = new BLL_Menu();
             //List<BOLMenuItem> objList = obj.SearchByMenuItem_List(Desc);
             DataTable objList = obj.SearchByMenuItem(Desc);
+            objList.TableName = "MenuItem";
+
+            res = Request.CreateResponse(HttpStatusCode.OK, objList);
+            res.Content.Headers.ContentType = new MediaTypeHeaderValue("application/json");
+            return res;
+        }
+
+        [Route("~/api/Menu/GetMenuItemByStockNoANDDesc")]
+        [HttpGet]
+        public HttpResponseMessage GetMenuItemByStockNoANDDesc(string stock_no, string Desc)
+        {
+            HttpResponseMessage res = new HttpResponseMessage();
+            BLL_Menu obj = new BLL_Menu();
+            //List<BOLMenuItem> objList = obj.SearchByMenuItem_List(Desc);
+            DataTable objList = obj.SearchByMenuItemByStockNoANDDesc(stock_no,Desc);
             objList.TableName = "MenuItem";
 
             res = Request.CreateResponse(HttpStatusCode.OK, objList);

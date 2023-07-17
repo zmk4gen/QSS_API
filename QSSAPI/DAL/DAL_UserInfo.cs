@@ -39,6 +39,17 @@ namespace QSSAPI.DAL
             return SqlConjunction.GetSQLDataTable(cmd);
         }
 
+        public DataTable BindUserInfoByCodeANDName(string code, string name)
+        {
+            SqlCommand cmd = new SqlCommand();
+            cmd.CommandText = "BindUserInfo_API";
+            cmd.CommandType = CommandType.StoredProcedure;
+            cmd.Parameters.AddWithValue("@ui_id", code);
+            cmd.Parameters.AddWithValue("@ui_name", name);
+            cmd.Parameters.AddWithValue("@status", "false");
+            return SqlConjunction.GetSQLDataTable(cmd);
+        }
+
         public int Insert_UserInfo(BOL_UserInfo bol_userInfo)
         {
             SqlCommand cmd = new SqlCommand();

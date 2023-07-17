@@ -20,10 +20,10 @@ namespace QSSAPI.Controllers
     {
         [HttpGet]
         [Route("~/api/MasterSlu/Get")]
-        public HttpResponseMessage Get(string cond_code = null, string name = null)
+        public HttpResponseMessage Get(string slu_number = null, string name = null)
         {
             HttpResponseMessage res = new HttpResponseMessage();
-            if ((cond_code == "" || cond_code == null) && (name == "" || name == null))
+            if ((slu_number == "" || slu_number == null) && (name == "" || name == null))
             {
                 res = GetAllmstr_slu();
             }
@@ -31,9 +31,13 @@ namespace QSSAPI.Controllers
             {
                 res = GetMasterSluByName(name);
             }
+            else if (slu_number != "" && slu_number != null)
+            {
+                res = GetMasterSluByCode(slu_number);
+            }
             else
             {
-                res = GetMasterSluByCode(cond_code);
+                res = GetMasterSluByCodeANDName(slu_number,name);
             }
             return res;
         }
@@ -74,6 +78,20 @@ namespace QSSAPI.Controllers
             HttpResponseMessage res = new HttpResponseMessage();
             BLL_mstr_slu obj = new BLL_mstr_slu ();
             DataTable objList = obj.Bind_mstr_sluByName(name);
+            objList.TableName = "mstr_slu";
+
+            res = Request.CreateResponse(HttpStatusCode.OK, objList);
+            res.Content.Headers.ContentType = new MediaTypeHeaderValue("application/json");
+            return res;
+        }
+
+        [HttpGet]
+        [Route("~/api/MasterSlu/GetMasterSluByCodeANDName")]
+        public HttpResponseMessage GetMasterSluByCodeANDName(string code,string name)
+        {
+            HttpResponseMessage res = new HttpResponseMessage();
+            BLL_mstr_slu obj = new BLL_mstr_slu();
+            DataTable objList = obj.Bind_mstr_sluByCodeANDName(code,name);
             objList.TableName = "mstr_slu";
 
             res = Request.CreateResponse(HttpStatusCode.OK, objList);

@@ -30,6 +30,12 @@ namespace QSSAPI.BLL
             return dalLocation.BindLocationByName(name);
         }
 
+        public DataTable BindLocationByCodeANDName(string code,string name)
+        {
+            DAL_Location dalLocation = new DAL_Location();
+            return dalLocation.BindLocationByCodeANDName(code, name);
+        }
+
         public int InserLocation(BOL_Location bolLocation)
         {
             int effectID = 0;

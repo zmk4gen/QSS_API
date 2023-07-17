@@ -17,20 +17,26 @@ namespace QSSAPI.BLL
         /// </summary>
         /// <returns></returns>
         public DataTable BindMenuItem()
-            {
+        {
+            DAL_Menu dal_menuitem = new DAL_Menu();
+            return dal_menuitem.BindMenuitem();
+        }
+        public DataTable SelectbyMenuItem(string stockno)
+        {
                 DAL_Menu dal_menuitem = new DAL_Menu();
-                return dal_menuitem.BindMenuitem();
-            }
-            public DataTable SelectbyMenuItem(string stockno)
-            {
-                  DAL_Menu dal_menuitem = new DAL_Menu();
-                return dal_menuitem.SelectbyMenuItem(stockno);
-            }
-            public DataTable SearchByMenuItem(string desc)
-            {
-                DAL_Menu dal_menuItem = new DAL_Menu();
-                return dal_menuItem.SearchbyMenuItem(desc);
-            }
+            return dal_menuitem.SelectbyMenuItem(stockno);
+        }
+        public DataTable SearchByMenuItem(string desc)
+        {
+            DAL_Menu dal_menuItem = new DAL_Menu();
+            return dal_menuItem.SearchbyMenuItem(desc);
+        }
+
+        public DataTable SearchByMenuItemByStockNoANDDesc(string stock_no,string desc)
+        {
+            DAL_Menu dal_menuItem = new DAL_Menu();
+            return dal_menuItem.SearchbyMenuItemByStockNoANDDesc(stock_no, desc);
+        }
         public DataTable SelectAllBranch()
         {
             DAL_Menu dal_menuItem = new DAL_Menu();

@@ -54,7 +54,19 @@ namespace QSSAPI.DAL
             return SqlConjunction.GetSQLDataTable(cmd);
         }
 
-    
+        public DataTable SearchbyMenuItemByStockNoANDDesc(string stock_no,string desc)
+        {
+            SqlCommand cmd = new SqlCommand();
+            cmd.CommandText = "BindMenuitem_API";
+            cmd.CommandType = CommandType.StoredProcedure;
+
+            cmd.Parameters.AddWithValue("@stockno", stock_no);
+            cmd.Parameters.AddWithValue("@Desc", desc);
+            cmd.Parameters.AddWithValue("@st_ingredient", false);
+            return SqlConjunction.GetSQLDataTable(cmd);
+        }
+
+
         public int Insert_MenuItem(BOL_stock bol_menu)
         {
             SqlCommand cmd = new SqlCommand();

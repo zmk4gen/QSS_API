@@ -19,10 +19,10 @@ namespace QSSAPI.Controllers
     {
         [HttpGet]
         [Route("~/api/UserProfile/Get")]
-        public HttpResponseMessage Get(string cond_code = null, string name = null)
+        public HttpResponseMessage Get(string code = null, string name = null)
         {
             HttpResponseMessage res = new HttpResponseMessage();
-            if ((cond_code == "" || cond_code == null) && (name == "" || name == null))
+            if ((code == "" || code == null) && (name == "" || name == null))
             {
                 res = GetAllUserProfile();
             }
@@ -30,9 +30,13 @@ namespace QSSAPI.Controllers
             {
                 res = GetUserProfileByName(name);
             }
+            else if (code != "" && code != null)
+            {
+                res = GetUserProfileByCode(code);
+            }
             else
             {
-                res = GetUserProfileByCode(cond_code);
+                res = GetUserProfileByCodeANDName(code,name);
             }
             return res;
         }
@@ -73,6 +77,20 @@ namespace QSSAPI.Controllers
             HttpResponseMessage res = new HttpResponseMessage();
             BLL_UserProfile obj = new BLL_UserProfile();
             DataTable objList = obj.BindUserProfileByName(name);
+            objList.TableName = "UserProfile";
+
+            res = Request.CreateResponse(HttpStatusCode.OK, objList);
+            res.Content.Headers.ContentType = new MediaTypeHeaderValue("application/json");
+            return res;
+        }
+
+        [HttpGet]
+        [Route("~/api/UserProfile/GetUserProfileByCodeANDName")]
+        public HttpResponseMessage GetUserProfileByCodeANDName(string code, string name)
+        {
+            HttpResponseMessage res = new HttpResponseMessage();
+            BLL_UserProfile obj = new BLL_UserProfile();
+            DataTable objList = obj.BindUserProfileByCodeANDName(code, name);
             objList.TableName = "UserProfile";
 
             res = Request.CreateResponse(HttpStatusCode.OK, objList);

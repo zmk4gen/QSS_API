@@ -36,6 +36,12 @@ namespace QSSAPI.BLL
             return dalStockGroup.BindStockGroupByName(name);
         }
 
+        public DataTable BindStockGroupByCodeANDName(string code, string name)
+        {
+            DAL_StockGroup dalStockGroup = new DAL_StockGroup();
+            return dalStockGroup.BindStockGroupByCodeANDName(code,name);
+        }
+
         public int InsertStockGroup(BOL_StockGroup bolstockgroup)
 
         {

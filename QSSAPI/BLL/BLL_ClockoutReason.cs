@@ -29,6 +29,12 @@ namespace QSSAPI.BLL
             return dalClockoutReason.BindClockoutReasonByName(name);
         }
 
+        public DataTable BindClockoutReasonByCodeANDName(string code, string name)
+        {
+            DAL_ClockoutReason dalClockoutReason = new DAL_ClockoutReason();
+            return dalClockoutReason.BindClockoutReasonByCodeANDName(code, name);
+        }
+
         public int InserClockoutReason(BOL_ClockoutReason bolClockoutReason)
         {
             int effectID = 0;

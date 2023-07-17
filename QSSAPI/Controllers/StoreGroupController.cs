@@ -19,10 +19,10 @@ namespace QSSAPI.Controllers
     {
         [HttpGet]
         [Route("~/api/StoreGroup/Get")]
-        public HttpResponseMessage Get(string cond_code = null, string name = null)
+        public HttpResponseMessage Get(string code = null, string name = null)
         {
             HttpResponseMessage res = new HttpResponseMessage();
-            if ((cond_code == "" || cond_code == null) && (name == "" || name == null))
+            if ((code == "" || code == null) && (name == "" || name == null))
             {
                 res = GetAllStoreGroup();
             }
@@ -30,9 +30,13 @@ namespace QSSAPI.Controllers
             {
                 res = GetStoreGroupByName(name);
             }
+            else if (code != "" && code != null)
+            {
+                res = GetStoreGroupByCode(code);
+            }
             else
             {
-                res = GetStoreGroupByCode(cond_code);
+                res = GetStoreGroupByCodeANDName(code,name);
             }
             return res;
         }
@@ -80,7 +84,22 @@ namespace QSSAPI.Controllers
             return res;
         }
 
-       
+
+        [HttpGet]
+        [Route("~/api/StoreGroup/GetStoreGroupByCodeANDName")]
+        public HttpResponseMessage GetStoreGroupByCodeANDName(string code,string name)
+        {
+            HttpResponseMessage res = new HttpResponseMessage();
+            BLL_StoreGroup obj = new BLL_StoreGroup();
+            DataTable objList = obj.BindStoreGroupByCodeANDName(code, name);
+            objList.TableName = "StoreGroup";
+
+            res = Request.CreateResponse(HttpStatusCode.OK, objList);
+            res.Content.Headers.ContentType = new MediaTypeHeaderValue("application/json");
+            return res;
+        }
+
+
         [Route("~/api/StoreGroup/InsertStoreGroup")]
         [HttpPost]
         // POST api/StoreGroup
@@ -100,9 +119,21 @@ namespace QSSAPI.Controllers
             return Request.CreateResponse(HttpStatusCode.OK, result);
         }
 
-        // PUT api/<controller>/5
-        public void Put(int id, [FromBody]string value)
+        [Route("~/api/StoreGroup/UpdateStoreGroup")]
+        [HttpPut]
+        // PUT api/StoreGroup
+        public HttpResponseMessage Put(int id, [FromBody]string value)
         {
+            BLL_StoreGroup obj = new BLL_StoreGroup();
+            BOL_StoreGroup objStoreGroup = new BOL_StoreGroup();
+            StreamReader reader = new StreamReader(HttpContext.Current.Request.InputStream);
+            reader.BaseStream.Position = 0;
+            string requestFromPut = reader.ReadToEnd();
+            objStoreGroup = JsonConvert.DeserializeObject<BOL_StoreGroup>(requestFromPut);
+            string result = "";
+            result = obj.UpdateStoreGroup(objStoreGroup) + ";";
+
+            return Request.CreateResponse(HttpStatusCode.OK, result);
         }
 
         // DELETE api/<controller>/5

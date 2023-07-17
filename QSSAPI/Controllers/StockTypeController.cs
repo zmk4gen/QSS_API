@@ -21,9 +21,10 @@ namespace QSSAPI.Controllers
         // GET api/StockType/Get
         [HttpGet]
         [Route("~/api/StockType/Get")]
-        public HttpResponseMessage Get(string code = null, string name=null)
+        public HttpResponseMessage Get(string code = null, string name = null)
         {
             HttpResponseMessage res = new HttpResponseMessage();
+
             if ((code == "" || code == null) && (name == "" || name == null))
             {
                 res = GetAllStockType();
@@ -32,9 +33,13 @@ namespace QSSAPI.Controllers
             {
                 res = GetStockTypeByName(name);
             }
-            else
+            else if (code != "" && code != null)
             {
                 res = GetStockTypeByStockCode(code);
+            }
+            else
+            {
+                res = GetStockTypeByCodeAndName(code, name);
             }
             return res;
         }
@@ -82,6 +87,20 @@ namespace QSSAPI.Controllers
             return res;
         }
 
+        [HttpGet]
+        [Route("~/api/StockType/GetStockTypeByCodeANDName")]
+        public HttpResponseMessage GetStockTypeByCodeAndName(string code, string name)
+        {
+            HttpResponseMessage res = new HttpResponseMessage();
+            BLL_StockType obj = new BLL_StockType();
+            DataTable objList = obj.BindStockTypeByCodeANDName(code,name);
+            objList.TableName = "Stock_Type";
+
+            res = Request.CreateResponse(HttpStatusCode.OK, objList);
+            res.Content.Headers.ContentType = new MediaTypeHeaderValue("application/json");
+            return res;
+        }
+
         [HttpPost]
         [Route("~/api/StockType/InsertStocktype")]
         // POST api/StockType
@@ -102,6 +121,8 @@ namespace QSSAPI.Controllers
         }
 
         // PUT api/StockType
+        [HttpPut]
+        [Route("~/api/StockType/UpdateStocktype")]
         public HttpResponseMessage Put(int id, [FromBody]string value)
         {
             BLL_StockType obj = new BLL_StockType();

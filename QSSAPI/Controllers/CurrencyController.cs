@@ -19,10 +19,10 @@ namespace QSSAPI.Controllers
     {
         [HttpGet]
         [Route("~/api/Currency/Get")]
-        public HttpResponseMessage Get(string cond_code = null, string name = null)
+        public HttpResponseMessage Get(string curr_code = null, string name = null)
         {
             HttpResponseMessage res = new HttpResponseMessage();
-            if ((cond_code == "" || cond_code == null) && (name == "" || name == null))
+            if ((curr_code == "" || curr_code == null) && (name == "" || name == null))
             {
                 res = GetAllCurrency();
             }
@@ -30,9 +30,13 @@ namespace QSSAPI.Controllers
             {
                 res = GetCurrencyByName(name);
             }
+            else if (curr_code != "" && name != curr_code)
+            {
+                res = GetCurrencyByCode(curr_code);
+            }
             else
             {
-                res = GetCurrencyByCode(cond_code);
+                res = GetCurrencyByCodeANDName(curr_code,name);
             }
             return res;
         }
@@ -80,6 +84,20 @@ namespace QSSAPI.Controllers
             return res;
         }
 
+        [HttpGet]
+        [Route("~/api/Currency/GetCurrencyByCodeANDName")]
+        public HttpResponseMessage GetCurrencyByCodeANDName(string code,string name)
+        {
+            HttpResponseMessage res = new HttpResponseMessage();
+            BLL_Currency obj = new BLL_Currency();
+            DataTable objList = obj.BindCurrencyByCodeANDName(code,name);
+            objList.TableName = "Currency";
+
+            res = Request.CreateResponse(HttpStatusCode.OK, objList);
+            res.Content.Headers.ContentType = new MediaTypeHeaderValue("application/json");
+            return res;
+        }
+
         // POST api/Currency
         [HttpPost]
         [Route("~/api/Currency/InsertCurrency")]
@@ -100,6 +118,8 @@ namespace QSSAPI.Controllers
         }
 
         // PUT api/Currency
+        [HttpPut]
+        [Route("~/api/Currency/UpdateCurrency")]
         public HttpResponseMessage Put(int id, [FromBody]string value)
         {
             BLL_Currency obj = new BLL_Currency();

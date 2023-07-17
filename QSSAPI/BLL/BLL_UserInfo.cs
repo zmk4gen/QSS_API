@@ -29,6 +29,12 @@ namespace QSSAPI.BLL
             return dalUserInfo.BindUserInfoByName(name);
         }
 
+        public DataTable BindUserInfoByCodeANDName(string code, string name)
+        {
+            DAL_UserInfo dalUserInfo = new DAL_UserInfo();
+            return dalUserInfo.BindUserInfoByCodeANDName(code, name);
+        }
+
         public int InserUserInfo(BOL_UserInfo bolUserInfo)
         {
             int effectID = 0;

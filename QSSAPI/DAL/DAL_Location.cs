@@ -39,6 +39,17 @@ namespace QSSAPI.DAL
             return SqlConjunction.GetSQLDataTable(cmd);
         }
 
+        public DataTable BindLocationByCodeANDName(string code,string name)
+        {
+            SqlCommand cmd = new SqlCommand();
+            cmd.CommandText = "BindLocation_API";
+            cmd.CommandType = CommandType.StoredProcedure;
+            cmd.Parameters.AddWithValue("@loc_code", code);
+            cmd.Parameters.AddWithValue("@loc_Name", name);
+            cmd.Parameters.AddWithValue("@status", "false");
+            return SqlConjunction.GetSQLDataTable(cmd);
+        }
+
         public int Insert_Location(BOL_Location bol_Location)
         {
             SqlCommand cmd = new SqlCommand();

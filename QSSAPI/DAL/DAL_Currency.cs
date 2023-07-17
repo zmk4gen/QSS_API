@@ -40,6 +40,17 @@ namespace QSSAPI.DAL
             return SqlConjunction.GetSQLDataTable(cmd);
         }
 
+        public DataTable BindCurrencyByCodeANDName(string code, string name)
+        {
+            SqlCommand cmd = new SqlCommand();
+            cmd.CommandText = "BindCurrency_API";
+            cmd.CommandType = CommandType.StoredProcedure;
+            cmd.Parameters.AddWithValue("@curr_code", code);
+            cmd.Parameters.AddWithValue("@curr_name", name);
+            cmd.Parameters.AddWithValue("@status", "false");
+            return SqlConjunction.GetSQLDataTable(cmd);
+        }
+
         public int Insert_Currency(BOL_Currency bol_Currency)
         {
             SqlCommand cmd = new SqlCommand();
